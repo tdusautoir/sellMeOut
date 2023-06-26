@@ -10,6 +10,12 @@ class ProductController extends Controller {
         $this->view("products");
     }
 
+    function showProduct($id) {
+        $product = $this->productManager->getById($id);
+        $this->compact(["product" => $product]);
+        $this->view("product");
+    }
+
     function addProduct($name, $description, $price) {
         $product = new \stdClass();
         $product->name = $name;
@@ -19,7 +25,7 @@ class ProductController extends Controller {
             $this->compact([
                 "success" => "Produit ajouté !"
             ]);
-            
+
             $this->addProductView();
         }
     }

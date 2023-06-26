@@ -20,7 +20,9 @@
             <nav>
                 <ul>
                     <li><a href="/products">Produits</a></li>
-                    <li><a href="/products/new">Ajout produit</a></li>
+                    <?php if(isset($_SESSION["user"]) && ($_SESSION["role"]) == 'seller') : ?>
+                        <li><a href="/products/new">Ajout produit</a></li>
+                    <?php endif; ?>
                     <?php if(isset($_SESSION["user"])): ?>
                         <li><a href="/logout">Logout</a></li>
                     <?php else: ?>

@@ -1,17 +1,17 @@
 [
     {
-        "path":"/signin",
+        "path":"/signup",
         "controller":"User",
-        "action":"SigninView",
+        "action":"SignupView",
         "method": "GET",
         "manager": [
             "user"
         ]
     },
     {
-        "path":"/signin",
+        "path":"/signup",
         "controller":"User",
-        "action":"Signin",
+        "action":"Signup",
         "method": "POST",
         "manager": [
             "user"

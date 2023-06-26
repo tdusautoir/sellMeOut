@@ -16,4 +16,4 @@
     <button type="submit">Connexion</button>
 </form>
 
-<a class="signin" href="/signin">Vous n'avez pas encore de compte ?</a>
+<a class="signin" href="/signup">Vous n'avez pas encore de compte.</a>

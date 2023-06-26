@@ -23,9 +23,9 @@ class UserController extends Controller {
         }
     }
 
-    function SigninView() 
+    function SignupView() 
     {
-        $this->view("signin");
+        $this->view("signup");
     }
 
     function LoginView($error = null) 
@@ -39,7 +39,7 @@ class UserController extends Controller {
         $this->view("login");
     }
 
-    function Signin($mail, $password) 
+    function Signup($mail, $password) 
     {
         $user = new \stdClass();
         $user->pseudo = 'test';
@@ -52,7 +52,7 @@ class UserController extends Controller {
 
             ]);
 
-            $this->SigninView();
+            $this->SignupView();
             exit();
         }
 
@@ -61,7 +61,7 @@ class UserController extends Controller {
                 "error" => "Mail déja utilisé !"
             ]);
             
-            $this->SigninView();
+            $this->SignupView();
             exit();
         }
 
@@ -71,7 +71,7 @@ class UserController extends Controller {
                 une lette minuscule, un chiffre et un caractère spécial"
             ]);
 
-            $this->SigninView();
+            $this->SignupView();
             exit();
         }
 
@@ -82,7 +82,7 @@ class UserController extends Controller {
             $this->LoginView();
         } else {
             $this->compact(["error" => "Une erreur est survenue !"]);
-            $this->SigninView();
+            $this->SignupView();
         }
     }
 
