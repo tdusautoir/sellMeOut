@@ -1,8 +1,9 @@
-<h2>Login</h2>
+<h2>Sign up</h2>
 
-<form action="/login" method="POST">
+<form action="/signin" method="POST">
     <!-- <label for="pseudo">Pseudo</label>
     <input type="text" id="pseudo" name="pseudo"> -->
+
     <div class="Mail">
         <label for="mail">Mail</label>
         <input class="error" type="text" id="mail" name="mail">
@@ -12,8 +13,6 @@
         <label for="password">Mot de passe</label>
         <input class="error" type="password" id="password" name="password">
     </div>
-    
-    <button type="submit">Connexion</button>
-</form>
 
-<a class="signin" href="/signin">Vous n'avez pas encore de compte ?</a>
+    <button type="submit">S'inscrire</button>
+</form>
