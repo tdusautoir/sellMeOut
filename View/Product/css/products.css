@@ -1,8 +1,15 @@
+h2{
+    padding-top: 100px;
+    font-size: 50px;
+    font-weight: 200;
+}
+
 .products {
     width: 100%;
 }
 
 .products-list {
+    padding-top: 50px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
@@ -13,17 +20,19 @@
 .product-card {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    background-color: rgb(239, 239, 239);
+    align-items: center;
+    gap: 8px;
+    background-color: orange;
     padding: 20px;
     border-radius: 5px;
     transition: 200ms ease-in-out;
     cursor: pointer;
     width: 100%;
+    flex-wrap: nowrap;
 }
 
 .product-card:hover {
-    background-color: rgb(220, 220, 220);
+    background-color: #F4A460;
 }
 
 .product-card p {
@@ -31,4 +40,19 @@
     overflow: hidden;
     line-height: 1.2;
     white-space: nowrap;
+}
+
+.product-card h3{
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.product-card .desc{
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.product-card .price{
+    font-size: 24px;
+    font-weight: 400;
 }

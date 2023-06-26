@@ -5,8 +5,8 @@
             <div class="product-card" data-id="<?= $product->id ?>">
                 <!-- <img src="<?= $product->images ?>" alt=""> -->
                 <h3><?= $product->name ?></h3>
-                <p><?= $product->description ?></p>
-                <p><?= $product->price ?></p>
+                <p class="desc"><?= $product->description ?></p>
+                <p class="price"><?= $product->price ?></p>
             </div>
         <?php endforeach; ?>
     </div>

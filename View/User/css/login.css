@@ -40,7 +40,6 @@ input{
 
 input.error{
   border-bottom: 2px solid orange;
-
 }
 
 input:focus{
