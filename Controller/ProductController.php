@@ -6,7 +6,7 @@ class ProductController extends Controller {
 
     function ShowProducts(){
         $products = $this->productManager->getAll();
-        $this->compact("products", $products);
+        $this->compact(["products" => $products]);
         $this->view("products");
     }
 
@@ -16,7 +16,11 @@ class ProductController extends Controller {
         $product->description = $description;
         $product->price = $price;
         if ($this->productManager->create($product)) {
-            header("Location: /Product");
+            $this->compact([
+                "success" => "Produit ajouté !"
+            ]);
+            
+            $this->addProductView();
         }
     }
 

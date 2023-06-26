@@ -31,8 +31,11 @@ class UserController extends Controller {
     function LoginView($error = null) 
     {
         if(isset($error)) {
-            $this->compact("error", $error);
+            $this->compact([
+                "error" => $error
+            ]);
         }
+
         $this->view("login");
     }
 
@@ -41,12 +44,46 @@ class UserController extends Controller {
         $user = new \stdClass();
         $user->pseudo = 'test';
         $user->mail = $mail;
-        $user->password = password_hash($password, PASSWORD_DEFAULT);
-        if ($this->userManager->create($user)) {
-            echo "Utilisateur créé !";
+
+        if(!(filter_var($mail, FILTER_VALIDATE_EMAIL))) {
+            $this->compact([
+                "error" => "Mail invalide !",
+                "error_mail" => true,
+
+            ]);
+
+            $this->SigninView();
+            exit();
         }
-        header('Location: /login');
-        exit();
+
+        if($this->userManager->getByMail($mail)) {
+            $this->compact([
+                "error" => "Mail déja utilisé !"
+            ]);
+            
+            $this->SigninView();
+            exit();
+        }
+
+        if(!(preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', $password))) {
+            $this->compact([
+                "error" => "Votre mot de passe doit contenir au moins 8 caractères, une lettre majuscule,
+                une lette minuscule, un chiffre et un caractère spécial"
+            ]);
+
+            $this->SigninView();
+            exit();
+        }
+
+        $user->password = password_hash($password, PASSWORD_DEFAULT);
+
+        if ($this->userManager->create($user)) {
+            $this->compact(["success" => "Votre compte a bien été créé !"]);
+            $this->LoginView();
+        } else {
+            $this->compact(["error" => "Une erreur est survenue !"]);
+            $this->SigninView();
+        }
     }
 
     function Login($mail, $password) 

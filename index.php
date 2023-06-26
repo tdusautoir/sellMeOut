@@ -32,7 +32,7 @@ if (count($result) == 1) {
     }
 
     // $match are the queries parameters
-    preg_match("|^".$result[0]->path. "$|",$_SERVER["REQUEST_URI"],$match);
+    preg_match("|^".$result[0]->path. "$|",$_SERVER["REQUEST_URI"], $match);
     unset($match[0]);
     $params = array_merge($_POST, $_GET, $match);
     $controllerName = "\\Controller\\" .$result[0]->controller."Controller";

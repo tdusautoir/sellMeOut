@@ -16,7 +16,7 @@
 <body>
     <header>
         <div class="header-content">
-            <img src="../Images/Logo SellMeOut.jpg" alt="Sell Me Out" class="logo">
+            <img src="/Images/Logo_SellMeOut.jpg" alt="Sell Me Out" class="logo">
             <nav>
                 <ul>
                     <li><a href="/products">Produits</a></li>
@@ -30,9 +30,14 @@
             </nav>
         </div>
     </header>
+    <?php if(isset($success)): ?>
+        <div class="success"><?= $success ?></div>
+    <?php endif; ?>
+
     <?php if(isset($error)): ?>
         <div class="error"><?= $error ?></div>
     <?php endif; ?>
+
     <div class="content">
         <?= $content ?>
     </div>

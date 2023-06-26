@@ -45,8 +45,10 @@ class Controller {
         echo json_encode($data);
     }
 
-    public function compact($key, $value) 
+    public function compact($array) 
     {
-        $this->params[$key] = $value;
+        foreach($array as $key => $value) {
+            $this->params[$key] = $value;
+        }
     }
 }
