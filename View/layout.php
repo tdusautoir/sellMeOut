@@ -16,7 +16,7 @@
 <body>
     <header>
         <div class="header-content">
-            <h1>PHP-MVC</h1>
+            <img src="../Images/Logo SellMeOut.jpg" alt="Sell Me Out" class="logo">
             <nav>
                 <ul>
                     <li><a href="/products">Produits</a></li>

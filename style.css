@@ -11,8 +11,13 @@ header {
     max-width: 1440px;
     margin: 0 auto;
     display: flex;
-    padding: 20px;
+    align-items: center;
+    padding: 8px;
     justify-content: space-between;
+}
+
+.header-content .logo{
+    width: 80px;
 }
 
 .header-content nav ul {
@@ -24,7 +29,7 @@ header {
 .header-content nav ul a {
     text-decoration: none;
     color: black;
-    padding: 5px;
+    padding: 7px;
     transition: 200ms ease-in-out;
     border-radius: 5px;
 }
