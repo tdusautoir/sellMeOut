@@ -1,4 +1,5 @@
 <?php
+
 spl_autoload_register(function($class){
     $class = str_replace('\\', '/', $class);
     include_once($class . ".php");
@@ -16,10 +17,11 @@ foreach ($routes as $route) {
         array_push($result, $route);
     }
 }
+
 if (count($result) == 1) {
     if(!empty($result[0]->auth)) {
         if(empty($_SESSION["user"])) {
-            header("Location: /User/login");
+            header("Location: /login");
             exit;
         }
 
@@ -37,5 +39,6 @@ if (count($result) == 1) {
     $controller = new $controllerName($result[0]);
     $controller->{$result[0]->action}(...$params);
 } else {
-    echo 'pas de route :(';
+    header("Location: /");
+    exit;
 }

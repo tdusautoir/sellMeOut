@@ -4,19 +4,6 @@ namespace Controller;
 class UserController extends Controller {
     protected $userManager;
 
-    function ShowUsers(){
-        $users = $this->userManager->getAll();
-        $this->compact("users", $users);
-        $this->view("users");
-    }
-
-    function ShowUser($id)
-    {
-        $user = $this->userManager->getById($id);
-        $this->compact("user", $user);
-        $this->view('user');
-    }
-
     function UpdateUser()
     {
         $user = new \stdClass();

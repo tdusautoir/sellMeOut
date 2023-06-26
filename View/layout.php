@@ -19,14 +19,13 @@
             <h1>PHP-MVC</h1>
             <nav>
                 <ul>
-                    <li><a href="/User">Utilisateurs</a></li>
-                    <li><a href="/Product">Produits</a></li>
-                    <li><a href="/Product/new">Ajout produit</a></li>
+                    <li><a href="/products">Produits</a></li>
+                    <li><a href="/products/new">Ajout produit</a></li>
                     <?php if(isset($_SESSION["user"])): ?>
-                        <li><a href="/User/logout">Logout</a></li>
+                        <li><a href="/logout">Logout</a></li>
                     <?php else: ?>
-                        <li><a href="/User/signin">Signin</a></li>
-                        <li><a href="/User/login">Login</a></li>
+                        <li><a href="/signin">Signin</a></li>
+                        <li><a href="/login">Login</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>

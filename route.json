@@ -1,45 +1,6 @@
 [
     {
-        "path":"/User",
-        "controller":"User",
-        "action":"ShowUsers",
-        "method": "GET",
-        "manager": [
-            "user"
-        ],
-        "auth": [
-            "admin"
-        ]
-    },
-    {
-        "path":"/User/([0-9]*)",
-        "controller":"User",
-        "action":"ShowUser",
-        "method": "GET",
-        "manager": [
-            "user"
-        ]
-    },
-    {
-        "path":"/User/update",
-        "controller":"User",
-        "action":"UpdateUser",
-        "method": "POST",
-        "manager": [
-            "user"
-        ]
-    },
-    {
-        "path":"/User/delete",
-        "controller":"User",
-        "action":"DeleteUser",
-        "method": "GET",
-        "manager": [
-            "user"
-        ]
-    },
-    {
-        "path":"/User/signin",
+        "path":"/signin",
         "controller":"User",
         "action":"SigninView",
         "method": "GET",
@@ -48,7 +9,7 @@
         ]
     },
     {
-        "path":"/User/signin",
+        "path":"/signin",
         "controller":"User",
         "action":"Signin",
         "method": "POST",
@@ -57,7 +18,7 @@
         ]
     },
     {
-        "path":"/User/login",
+        "path":"/login",
         "controller":"User",
         "action":"LoginView",
         "method": "GET",
@@ -66,7 +27,7 @@
         ]
     },
     {
-        "path":"/User/login",
+        "path":"/login",
         "controller":"User",
         "action":"Login",
         "method": "POST",
@@ -75,16 +36,7 @@
         ]
     },
     {
-        "path":"/User/logout",
-        "controller":"User",
-        "action":"Logout",
-        "method": "GET",
-        "manager": [
-            "user"
-        ]
-    },
-    {
-        "path":"/Product",
+        "path":"/",
         "controller":"Product",
         "action":"ShowProducts",
         "method": "GET",
@@ -93,21 +45,74 @@
         ]
     },
     {
-        "path": "/Product/new",
-        "controller": "Product",
-        "action": "addProductView",
+        "path":"/products",
+        "controller":"Product",
+        "action":"ShowProducts",
         "method": "GET",
         "manager": [
             "product"
         ]
     },
     {
-        "path": "/Product/new",
+        "path": "/products/new",
+        "controller": "Product",
+        "action": "addProductView",
+        "method": "GET",
+        "manager": [
+            "product"
+        ],
+        "auth": [
+            "sell_me_out",
+            "seller"
+        ]
+    },
+    {
+        "path": "/products/new",
         "controller": "Product",
         "action": "addProduct",
         "method": "POST",
         "manager": [
             "product"
+        ],
+        "auth": [
+            "sell_me_out",
+            "seller"
+        ]
+    },
+    {
+        "path":"/products/([0-9]*)",
+        "controller":"Product",
+        "action":"ShowProduct",
+        "method": "GET",
+        "manager": [
+            "product"
+        ]
+    },
+    {
+        "path":"/products/([0-9]*)/notice",
+        "controller":"Product",
+        "action":"NoticeProduct",
+        "method": "GET",
+        "manager": [
+            "product"
+        ]
+    },
+    {
+        "path":"/cart",
+        "controller":"Cart",
+        "action":"ShowCart",
+        "method": "GET",
+        "manager": [
+            "cart"
+        ]
+    },
+    {
+        "path":"/cart/validate",
+        "controller":"Cart",
+        "action":"ValidateCart",
+        "method": "GET",
+        "manager": [
+            "cart"
         ]
     }
 ]
