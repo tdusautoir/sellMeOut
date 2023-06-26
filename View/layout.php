@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/reset.css">
     <link rel="stylesheet" href="/style.css">
+    <script src="https://kit.fontawesome.com/dd65784bc0.js" crossorigin="anonymous"></script>
     <?php if(!empty($headers)): ?>
         <?php foreach($headers as $header): ?>
             <?= $header ?>
@@ -21,7 +22,7 @@
                 <ul>
                     <li>
                         <div class="Deroulant">
-                            <a href="/products" class="Product-nav">Produits</a>
+                            <a href="/products" class="Product-nav">Produits<?php if(isset($_SESSION["user"]) && ($_SESSION["user"]->role == 'seller')) : ?><i class="fa-solid fa-chevron-down"></i><?php endif; ?></a>
                             <?php if(isset($_SESSION["user"]) && ($_SESSION["user"]->role == 'seller')) : ?>
                                 <div class="ProductOpt">
                                     <a href="/products/new" class="ajout">Ajout produit</a>

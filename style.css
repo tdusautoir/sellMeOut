@@ -46,6 +46,11 @@ header {
     visibility: visible;
 }
 
+.Deroulant i{
+    font-size: 10px;
+    padding-left: 5px;
+}
+
 .Deroulant .ProductOpt{
     visibility: hidden;
     position: absolute;
