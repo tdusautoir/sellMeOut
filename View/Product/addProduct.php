@@ -1,14 +1,20 @@
 <h2>Ajout produit</h2>
 
 <form action="/Product/new" method="POST">
-    <label for="name">Nom</label>
-    <input type="text" id="name" name="name">
+    <div class="name">
+        <label for="name">Nom</label>
+        <input class="error" type="text" id="name" name="name"> 
+    </div>
 
-    <label for="description">Description</label>
-    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+    <div class="description">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+    </div>
 
-    <label for="price">prix</label>
-    <input type="number" id="price" name="price" step="0.01" min="0">
+    <div class="price">
+        <label for="price">Prix</label>
+        <input class="error" type="number" id="price" name="price" step="0.01" min="0">
+    </div>
 
     <button type="submit">Ajouter</button>
 </form>

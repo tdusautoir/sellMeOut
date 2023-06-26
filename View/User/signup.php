@@ -13,6 +13,15 @@
         <label for="password">Mot de passe</label>
         <input class="error" type="password" id="password" name="password">
     </div>
+    <div class="role">
+        <p class="Role">Rôle</p>
+        <select name="Rôle" id="role" >
+            <option value=""></option>
+            <option value="seller">Vendeur</option>
+            <option value="buyer">Acheteur</option>
+        </select>
+    </div>
+    
 
     <button type="submit">S'inscrire</button>
 </form>

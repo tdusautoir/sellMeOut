@@ -19,10 +19,18 @@
             <img src="/Images/Logo_SellMeOut.jpg" alt="Sell Me Out" class="logo">
             <nav>
                 <ul>
-                    <li><a href="/products">Produits</a></li>
-                    <?php if(isset($_SESSION["user"]) && ($_SESSION["role"]) == 'seller') : ?>
-                        <li><a href="/products/new">Ajout produit</a></li>
-                    <?php endif; ?>
+                    <li>
+                        <div class="Deroulant">
+                            <a href="/products" class="Product-nav">Produits</a>
+                            <?php if(isset($_SESSION["user"]) && ($_SESSION["user"]->role == 'seller')) : ?>
+                                <div class="ProductOpt">
+                                    <a href="/products/new" class="ajout">Ajout produit</a>
+                                    <a href="/products/delete" class="suppression">Supprimer produit</a>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        
+                    </li>
                     <?php if(isset($_SESSION["user"])): ?>
                         <li><a href="/logout">Logout</a></li>
                     <?php else: ?>
