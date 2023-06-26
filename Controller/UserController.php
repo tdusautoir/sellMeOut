@@ -45,6 +45,8 @@ class UserController extends Controller {
         if ($this->userManager->create($user)) {
             echo "Utilisateur créé !";
         }
+        header('Location: /login');
+        exit();
     }
 
     function Login($mail, $password) 

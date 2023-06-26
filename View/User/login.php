@@ -1,6 +1,6 @@
 <h2>Login</h2>
 
-<form action="/User/login" method="POST">
+<form action="/login" method="POST">
     <!-- <label for="pseudo">Pseudo</label>
     <input type="text" id="pseudo" name="pseudo"> -->
 
@@ -12,3 +12,5 @@
 
     <button type="submit">Envoyer</button>
 </form>
+
+<a href="/signin">Vous n'avez pas encore de compte.</a>

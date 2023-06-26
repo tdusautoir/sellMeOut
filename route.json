@@ -36,6 +36,15 @@
         ]
     },
     {
+        "path":"/logout",
+        "controller":"User",
+        "action":"Logout",
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
+    },
+    {
         "path":"/",
         "controller":"Product",
         "action":"ShowProducts",
