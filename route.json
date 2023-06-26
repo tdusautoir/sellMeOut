@@ -1,0 +1,113 @@
+[
+    {
+        "path":"/User",
+        "controller":"User",
+        "action":"ShowUsers",
+        "method": "GET",
+        "manager": [
+            "user"
+        ],
+        "auth": [
+            "admin"
+        ]
+    },
+    {
+        "path":"/User/([0-9]*)",
+        "controller":"User",
+        "action":"ShowUser",
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/update",
+        "controller":"User",
+        "action":"UpdateUser",
+        "method": "POST",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/delete",
+        "controller":"User",
+        "action":"DeleteUser",
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/signin",
+        "controller":"User",
+        "action":"SigninView",
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/signin",
+        "controller":"User",
+        "action":"Signin",
+        "method": "POST",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/login",
+        "controller":"User",
+        "action":"LoginView",
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/login",
+        "controller":"User",
+        "action":"Login",
+        "method": "POST",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/logout",
+        "controller":"User",
+        "action":"Logout",
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/Product",
+        "controller":"Product",
+        "action":"ShowProducts",
+        "method": "GET",
+        "manager": [
+            "product"
+        ]
+    },
+    {
+        "path": "/Product/new",
+        "controller": "Product",
+        "action": "addProductView",
+        "method": "GET",
+        "manager": [
+            "product"
+        ]
+    },
+    {
+        "path": "/Product/new",
+        "controller": "Product",
+        "action": "addProduct",
+        "method": "POST",
+        "manager": [
+            "product"
+        ]
+    }
+]
