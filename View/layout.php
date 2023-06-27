@@ -41,6 +41,7 @@
                                 <a href="/profil/products" class="ajout">Mes produits</a>
                             </div>
                         <?php endif; ?>
+                        <a href="/profil/commands">Mes commandes</a>
                     </div>
                     
                     <div class="connect" id="connexion-menu">

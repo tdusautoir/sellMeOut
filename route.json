@@ -167,7 +167,7 @@
         "auth": ["seller"]
     },
     {
-        "path":"/profil/command",
+        "path":"/profil/commands",
         "controller":"Command",
         "action": "ShowCommands",
         "method": "GET",

@@ -7,7 +7,7 @@ class CommandController extends Controller {
     protected $productManager;
 
     public function showCommands() {
-        $commands = $this->commandManager->getAll();
+        $commands = $this->commandManager->getByUser($_SESSION["user"]->id);
         $this->compact(["commands" => $commands]);
         $this->view("command");
     }
