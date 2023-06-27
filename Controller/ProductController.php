@@ -11,15 +11,17 @@ class ProductController extends Controller {
         $this->view("products");
     }
 
-    function showProduct($id) {
-        $product = $this->productManager->getProductByIdWithRatings($id);
+    function ShowProductsSeller() {
+        $products = $this->productManager->getAllBySeller($_SESSION["user"]->id);
+        $this->compact(["products" => $products]);
+        $this->view("products");
+    }
 
+    function showProduct($id) {
         if(isset($_SESSION["user"])) {
-            $rate = $this->rateManager->getCurrentRate($id, $_SESSION["user"]->id);
-            
-            if($rate) {
-                $product->rating = $rate->rating;
-            }
+            $product = $this->productManager->getByIdWithRatings($id);
+        } else {
+            $product = $this->productManager->getById($id);
         }
 
         $this->compact(["product" => $product]);
@@ -41,7 +43,7 @@ class ProductController extends Controller {
     }
 
     function rateProduct($id, $rating) {
-        $rate = $this->rateManager->getCurrentRate($id, $_SESSION["user"]->id);
+        $rate = $this->rateManager->getProductCurrentRate($id, $_SESSION["user"]->id);
 
         if ($rate) {
             $rate->rating = $rating;
@@ -58,8 +60,10 @@ class ProductController extends Controller {
         $rate->product_id = $id;
         $rate->user_id = $_SESSION["user"]->id;
         $rate->rating = $rating;
+
         if ($this->rateManager->create($rate)) {
             $this->json([
+                "rate" => $rate,
                 "success" => true
             ]);
 

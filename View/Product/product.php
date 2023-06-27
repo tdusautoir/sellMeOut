@@ -9,17 +9,32 @@
     <button>Ajouter</button>
 </form>
 
-<div class="ratings">
-    <?php for($i = 1; $i <= 5; $i++): ?>
-        <?php if(isset($product->averageRating)): ?>
-            <?php if($i <= $product->averageRating): ?>
+<p>Note moyenne du produit</p>
+<div class="average-ratings ratings">
+    <?php for ($i = 1; $i <= 5; $i++) : ?>
+        <?php if (isset($product->averageRating)) : ?>
+            <?php if ($i <= $product->averageRating) : ?>
                 <i class="fas fa-star star"></i>
-            <?php else: ?>
+            <?php else : ?>
                 <i class="far fa-star star"></i>
             <?php endif; ?>
-        <?php else: ?>
+        <?php else : ?>
             <i class="far fa-star star"></i>
         <?php endif; ?>
     <?php endfor; ?>
 </div>
 
+<p>Note moyenne du vendeur : </p>
+<div class="seller-ratings ratings">
+    <?php for ($i = 1; $i <= 5; $i++) : ?>
+        <?php if (isset($product->sellerRating)) : ?>
+            <?php if ($i <= $product->sellerRating) : ?>
+                <i class="fas fa-star star"></i>
+            <?php else : ?>
+                <i class="far fa-star star"></i>
+            <?php endif; ?>
+        <?php else : ?>
+            <i class="far fa-star star"></i>
+        <?php endif; ?>
+    <?php endfor; ?>
+</div>
