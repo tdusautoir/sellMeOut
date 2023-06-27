@@ -42,8 +42,9 @@
                             </div>
                         <?php endif; ?>
                     </div>
+                    
                     <div class="connect" id="connexion-menu">
-                        <div class="logo-connect" >
+                        <div class="logo-connect <?php if(isset($_SESSION["user"])) { echo "connected"; } ?>">
                             <i class="fa-solid fa-user"></i>
                         </div>
                         <div class="sous-menu" id="connexion-sous-menu">

@@ -4,7 +4,7 @@
 </div>
 
 
-<?php if(isset($products) && !empty($products)): ?>
+<?php if(isset($cart) && !empty($cart)): ?>
     <table>
         <thead>
             <tr>
@@ -14,16 +14,26 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($products as $product): ?>
+            <?php foreach($cart as $product): ?>
                 <tr>
                     <td><?= $product->name ?></td>
                     <td class="product-price"><?= $product->price ?>€</td>
                     <td class="product-quantity"><?= $product->quantity ?></td>
-                    <td><a href=""><i class="fa-solid fa-trash-can"></i></a></td> 
+                    <td>
+                        <form action="/cart/remove/<?= $product->id ?>" method="POST">
+                            <button><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+                    </td> 
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <p>Total : <?= $total ?> €</p>
+
+    <form action="/cart/command" method="POST">
+        <button>Commander</button>
+    </form>
 <?php else: ?>
     <p>Votre panier est vide</p>
 <?php endif; ?>
