@@ -99,6 +99,15 @@
         ]
     },
     {
+        "path":"/products/search/([a-zA-Z0-9%]*)",
+        "controller":"Product",
+        "action":"ShowSearchProducts",
+        "method": "GET",
+        "manager": [
+            "product"
+        ]
+    },
+    {
         "path":"/products/([0-9]*)/rate",
         "controller":"Product",
         "action": "rateProduct",
@@ -144,6 +153,18 @@
             "commandDetail"
         ],
         "auth": ["buyer"]
+    },
+    {
+        "path":"/profil/products",
+        "controller":"Product",
+        "action": "ShowProductsSeller",
+        "method": "GET",
+        "manager": [
+            "product",
+            "command",
+            "commandDetail"
+        ],
+        "auth": ["seller"]
     },
     {
         "path":"/profil/command",

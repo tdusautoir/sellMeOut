@@ -8,6 +8,16 @@ class ProductManager extends ModelManager{
         parent::__construct("product");
     }
 
+    public function getBySearch($search)
+    {
+        $req = $this->bdd->prepare("SELECT * FROM product 
+        WHERE product.name LIKE :search");
+        $req->bindValue(":search", "%" . $search . "%");
+        $req->execute();
+        $req->setFetchMode(\PDO::FETCH_OBJ);
+        return $req->fetchAll();
+    }
+
     public function getByIdWithRatings($product_id)
     {
         $req =  $this->bdd->prepare("SELECT product.*, AVG(rates.rating) as averageRating FROM product 
