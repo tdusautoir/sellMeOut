@@ -13,7 +13,21 @@
             <?= $header ?>
         <?php endforeach; ?>
     <?php endif; ?>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const flashMessages = document.querySelectorAll(".flash_message");
+            flashMessages.forEach(flashMessage => {
+                flashMessage.classList.add("show");
+
+                setTimeout(() => {
+                    flashMessage.classList.remove("show");
+                }, 2000)
+            });
+        });
+    </script>
 </head>
+
 <body>
     <header>
         <div class="header-content">
@@ -35,9 +49,9 @@
                         </div>
                         <div class="sous-menu" id="connexion-sous-menu">
                             <?php if(isset($_SESSION["user"])): ?>
-                            <li><a href="/logout">Logout</a></li>
+                                <li><a href="/logout">Logout</a></li>
                             <?php else: ?>
-                            <li><a href="/login">Login</a></li>
+                                <li><a href="/login">Login</a></li>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -47,11 +61,11 @@
         </div>
     </header>
     <?php if(isset($success)): ?>
-        <div class="success"><?= $success ?></div>
+        <div class="flash_message success"><?= $success ?></div>
     <?php endif; ?>
 
     <?php if(isset($error)): ?>
-        <div class="error"><?= $error ?></div>
+        <div class="flash_message error"><?= $error ?></div>
     <?php endif; ?>
 
     <div class="content">
