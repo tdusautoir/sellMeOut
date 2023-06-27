@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SellMeOut</title>
     <script src="https://kit.fontawesome.com/49dbd7732f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/reset.css">
     <link rel="stylesheet" href="/style.css">
-    <script src="https://kit.fontawesome.com/dd65784bc0.js" crossorigin="anonymous"></script>
     <?php if(!empty($headers)): ?>
         <?php foreach($headers as $header): ?>
             <?= $header ?>
@@ -25,17 +24,16 @@
                         <a href="/products" class="Product-nav">Produits<?php if(isset($_SESSION["user"]) && ($_SESSION["user"]->role == 'seller')) : ?><i class="fa-solid fa-chevron-down"></i><?php endif; ?></a>
                         <?php if(isset($_SESSION["user"]) && ($_SESSION["user"]->role == 'seller')) : ?>
                             <div class="ProductOpt">
-                                <a href="/products/new" class="ajout">Ajout produit</a>
-                                <a href="/products/delete" class="suppression">Supprimer produit</a>
+                                <a href="/products/new" class="myProducts">Mes produits</a>
                             </div>
                         <?php endif; ?>
                     </div>
                     
-                    <div class="connect">
-                        <div class="logo-connect ">
+                    <div class="connect" id="connexion-menu">
+                        <div class="logo-connect" >
                             <i class="fa-solid fa-user"></i>
                         </div>
-                        <div class="sous-menu">
+                        <div class="sous-menu" id="connexion-sous-menu">
                             <?php if(isset($_SESSION["user"])): ?>
                             <li><a href="/logout">Logout</a></li>
                             <?php else: ?>
@@ -59,5 +57,15 @@
     <div class="content">
         <?= $content ?>
     </div>
+
+    <script>
+        document.getElementById("connexion-menu").addEventListener("click", function(e) {
+        if (document.getElementById("connexion-sous-menu").classList.contains('visible')) {
+            document.getElementById("connexion-sous-menu").classList.remove('visible');
+        } else {
+            document.getElementById("connexion-sous-menu").classList.add('visible');
+        }
+        });
+    </script>
 </body>
 </html>
