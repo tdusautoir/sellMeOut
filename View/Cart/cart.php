@@ -29,11 +29,13 @@
         </tbody>
     </table>
 
-    <p>Total : <?= $total ?> €</p>
-
-    <form action="/cart/command" method="POST">
-        <button>Commander</button>
-    </form>
+    <div class="command-price">
+        <p class="price-total">Total : <?= $total ?> €</p>
+        <form action="/cart/command" method="POST">
+            <button>Buy <i class="fa-solid fa-cart-shopping"></i></button>
+        </form>
+    </div>
+    
 <?php else: ?>
     <p>Votre panier est vide</p>
 <?php endif; ?>
