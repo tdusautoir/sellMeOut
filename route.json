@@ -116,21 +116,33 @@
         "method": "GET",
         "manager": [
             "product"
-        ]
+        ],
+        "auth": ["buyer"]
     },
     {
         "path": "/cart/add",
         "controller": "Cart",
         "action": "AddToCart",
-        "method": "POST"
+        "method": "POST",
+        "auth": ["buyer"]
     },
     {
-        "path":"/cart/validate",
+        "path": "/cart/remove/([0-9]*)",
+        "controller": "Cart",
+        "action": "RemoveFromCart",
+        "method": "POST",
+        "auth": ["buyer"]
+    },
+    {
+        "path":"/cart/command",
         "controller":"Cart",
-        "action":"ValidateCart",
-        "method": "GET",
+        "action": "commandCart",
+        "method": "POST",
         "manager": [
-            "cart"
-        ]
+            "product",
+            "command",
+            "commandDetail"
+        ],
+        "auth": ["buyer"]
     }
 ]

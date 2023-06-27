@@ -46,7 +46,7 @@
                     </div>
                     
                     <div class="connect">
-                        <div class="logo-connect ">
+                        <div class="logo-connect <?php if(isset($_SESSION["user"])) { echo "connected"; } ?>">
                             <i class="fa-solid fa-user"></i>
                         </div>
                         <div class="sous-menu visible">
