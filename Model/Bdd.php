@@ -7,7 +7,8 @@ class Bdd {
 
     private function __construct()
     {
-        $this->connect = new \PDO("mysql:dbname=sellmeout;host=localhost","root","root");
+        $config = json_decode(file_get_contents("config.json"))->database;
+        $this->connect = new \PDO("mysql:dbname=" . $config->database . ";host=" . $config->host . "",$config->user,$config->password);
     }
 
     public static function getInstance()
