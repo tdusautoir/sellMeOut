@@ -56,18 +56,16 @@ header {
 .Deroulant .ProductOpt{
     visibility: hidden;
     position: absolute;
-    left: -7px;
-    padding-bottom: 2px;
+    left: -2px;
     bottom: -45px;
-    line-height: 2;
-    transition: all 0.3s ease;
+    line-height: 1.85;
     background-color: rgba(240, 240, 240, 0.6);
     border-radius: 0px 0px 10px 10px;
 
 }
 
 .myProducts{
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 0px 0px 10px 10px;
 }
 
@@ -88,8 +86,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     background-color: rgba(215, 215, 215, 0.6);
     border-radius: 100vmax;
 }
@@ -98,7 +96,7 @@ header {
     position: absolute;
     left: center;
     top:center;
-    font-size:20px;
+    font-size:16px;
 }
 
 .logo-connect:hover{
@@ -112,10 +110,10 @@ header {
     content:"";
     width: 10px;
     height: 10px;
-    top: -10px;
-    left: 15px;
+    top: -8px;
+    left: 12px;
     border-radius: 100vmax;
-    border: 4px solid  rgba(215, 215, 215, 0.6);
+    border: 2px solid  rgba(215, 215, 215, 0.6);
     background-color:  black;
 }
 
@@ -128,8 +126,8 @@ header {
     z-index: -10;
     font-size: 14px;
     position: absolute;
-    left: -13px;
-    bottom: -35px;
+    left: -16px;
+    bottom: -36px;
     width: fit-content;
     height: 30px;
     padding: 5px;

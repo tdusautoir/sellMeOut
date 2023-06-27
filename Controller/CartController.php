@@ -8,6 +8,8 @@ class CartController extends Controller {
     public function showCart() {
 
         $products = [];
+
+        $_SESSION["cart"] = [1,2,3,3];
         if(isset($_SESSION["cart"])) {
             foreach($_SESSION["cart"] as $id) {
                 $product = $this->productManager->getById($id);

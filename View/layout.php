@@ -42,7 +42,6 @@
                             </div>
                         <?php endif; ?>
                     </div>
-                    
                     <div class="connect" id="connexion-menu">
                         <div class="logo-connect" >
                             <i class="fa-solid fa-user"></i>
@@ -55,7 +54,11 @@
                             <?php endif; ?>
                         </div>
                     </div>
-                    
+                    <div class="basket">
+                        <a href="/cart">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        </a>
+                    </div>
                 </ul>
             </nav>
         </div>

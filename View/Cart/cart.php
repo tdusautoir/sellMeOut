@@ -1,4 +1,8 @@
-<h2>Panier</h2>
+<div class="cart-title">
+    <h2>Panier</h2>
+    <i class="fa-solid fa-basket-shopping"></i>
+</div>
+
 
 <?php if(isset($products) && !empty($products)): ?>
     <table>
@@ -13,8 +17,9 @@
             <?php foreach($products as $product): ?>
                 <tr>
                     <td><?= $product->name ?></td>
-                    <td><?= $product->price ?>€</td>
-                    <td><?= $product->quantity ?></td>
+                    <td class="product-price"><?= $product->price ?>€</td>
+                    <td class="product-quantity"><?= $product->quantity ?></td>
+                    <td><a href=""><i class="fa-solid fa-trash-can"></i></a></td> 
                 </tr>
             <?php endforeach; ?>
         </tbody>
