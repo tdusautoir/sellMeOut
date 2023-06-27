@@ -8,9 +8,8 @@ class ProductManager extends ModelManager{
         parent::__construct("product");
     }
 
-    public function getProductByIdWithRatings($product_id){
-
-
+    public function getProductByIdWithRatings($product_id)
+    {
         $req =  $this->bdd->prepare("SELECT product.*, AVG(rates.rating) as averageRating FROM product 
         INNER JOIN rates
             ON rates.product_id = product.id
@@ -34,5 +33,15 @@ class ProductManager extends ModelManager{
             $product->sellerRating = $rating->sellerRating;
         }
         return $product;
+    }
+
+    public function getAllSeller($seller_id)
+    {
+        $req =  $this->bdd->prepare("SELECT * FROM product 
+        WHERE product.user_id = :seller_id");
+        $req->bindParam(":seller_id", $seller_id);
+        $req->execute();
+        $req->setFetchMode(\PDO::FETCH_OBJ);
+        return $req->fetchAll();
     }
 }

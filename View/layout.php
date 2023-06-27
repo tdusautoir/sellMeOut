@@ -25,6 +25,7 @@
                         <a href="/products" class="Product-nav">Produits<?php if(isset($_SESSION["user"]) && ($_SESSION["user"]->role == 'seller')) : ?><i class="fa-solid fa-chevron-down"></i><?php endif; ?></a>
                         <?php if(isset($_SESSION["user"]) && ($_SESSION["user"]->role == 'seller')) : ?>
                             <div class="ProductOpt">
+                                <a href="/products" class="ajout">Mes produits</a>
                                 <a href="/products/new" class="ajout">Ajout produit</a>
                                 <a href="/products/delete" class="suppression">Supprimer produit</a>
                             </div>

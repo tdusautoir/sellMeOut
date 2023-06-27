@@ -6,9 +6,16 @@ class ProductController extends Controller {
     protected $rateManager;
 
     function ShowProducts(){
-        $products = $this->productManager->getAll();
-        $this->compact(["products" => $products]);
-        $this->view("products");
+        if(isset($_SESSION["user"]) && ($_SESSION["user"]->role == 'seller')){
+            $products = $this->productManager->getAllSeller($_SESSION["user"]->id);
+            $this->compact(["products" => $products]);
+            $this->view("products");
+        }else{
+            $products = $this->productManager->getAll();
+            $this->compact(["products" => $products]);
+            $this->view("products");
+        }
+
     }
 
     function showProduct($id) {
