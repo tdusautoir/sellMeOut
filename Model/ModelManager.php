@@ -83,7 +83,7 @@ class ModelManager
         return $req->rowCount() == 1;
     }
 
-    public function updateDeletionValue()
+    public function updateDeletionValue($id)
     {
         $sql = "UPDATE " . $this->table . " SET `deletion` = 1 WHERE id = :id";
         $req = $this->bdd->prepare($sql);

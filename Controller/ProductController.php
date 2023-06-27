@@ -31,6 +31,8 @@ class ProductController extends Controller {
         $product->name = $name;
         $product->description = $description;
         $product->price = $price;
+        $product->user_id = $_SESSION["user"]->id;
+        
         if ($this->productManager->create($product)) {
             $this->compact([
                 "success" => "Produit ajouté !"
