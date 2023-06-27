@@ -48,8 +48,6 @@ class ModelManager
 
     public function update($obj)
     {
-        //"UPDATE table SET property=value,property2=value2 WHERE id=id"
-
         $sql = "UPDATE " . $this->table . " SET ";
         $propertiesList = get_object_vars($obj);
         $properties = array();
@@ -62,7 +60,6 @@ class ModelManager
             $sql .= implode(", ", $properties);
             $sql .= " WHERE id= :id";
 
-            echo $sql;
             $req = $this->bdd->prepare($sql);
 
             $req->execute(get_object_vars($obj));

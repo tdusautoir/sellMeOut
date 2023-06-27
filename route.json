@@ -94,17 +94,20 @@
         "action":"ShowProduct",
         "method": "GET",
         "manager": [
-            "product"
+            "product",
+            "rate"
         ]
     },
     {
-        "path":"/products/([0-9]*)/notice",
+        "path":"/products/([0-9]*)/rate",
         "controller":"Product",
-        "action":"NoticeProduct",
-        "method": "GET",
+        "action": "rateProduct",
+        "method": "POST",
         "manager": [
-            "product"
-        ]
+            "product",
+            "rate"
+        ],
+        "auth": ["*"]
     },
     {
         "path":"/cart",
