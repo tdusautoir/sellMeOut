@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<form action="/signin" method="POST">
+<form action="/signup" method="POST">
     <!-- <label for="pseudo">Pseudo</label>
     <input type="text" id="pseudo" name="pseudo"> -->
 
