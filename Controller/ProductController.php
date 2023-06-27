@@ -12,7 +12,7 @@ class ProductController extends Controller {
     }
 
     function showProduct($id) {
-        $product = $this->productManager->getById($id);
+        $product = $this->productManager->getProductByIdWithRatings($id);
 
         if(isset($_SESSION["user"])) {
             $rate = $this->rateManager->getCurrentRate($id, $_SESSION["user"]->id);
