@@ -115,8 +115,14 @@
         "action":"ShowCart",
         "method": "GET",
         "manager": [
-            "cart"
+            "product"
         ]
+    },
+    {
+        "path": "/cart/add",
+        "controller": "Cart",
+        "action": "AddToCart",
+        "method": "POST"
     },
     {
         "path":"/cart/validate",
