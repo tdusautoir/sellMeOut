@@ -32,9 +32,7 @@ class ProductController extends Controller {
         $product->description = $description;
         $product->price = $price;
         if ($this->productManager->create($product)) {
-            $this->compact([
-                "success" => "Produit ajouté !"
-            ]);
+            create_flash_message("success", "Produit ajouté", FLASH_SUCCESS);
 
             $this->addProductView();
         }

@@ -144,5 +144,17 @@
             "commandDetail"
         ],
         "auth": ["buyer"]
+    },
+    {
+        "path":"/profil/command",
+        "controller":"Command",
+        "action": "ShowCommands",
+        "method": "GET",
+        "manager": [
+            "product",
+            "command",
+            "commandDetail"
+        ],
+        "auth": ["seller"]
     }
 ]
