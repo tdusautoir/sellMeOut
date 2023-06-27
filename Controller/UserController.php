@@ -3,6 +3,7 @@ namespace Controller;
 
 class UserController extends Controller {
     protected $userManager;
+    protected $allowedRoles = ["buyer", "seller"];
 
     function UpdateUser()
     {
@@ -39,7 +40,7 @@ class UserController extends Controller {
         $this->view("login");
     }
 
-    function Signup($mail, $password) 
+    function Signup($mail, $password, $role) 
     {
         $user = new \stdClass();
         $user->pseudo = 'test';
@@ -56,21 +57,36 @@ class UserController extends Controller {
             exit();
         }
 
-        if($this->userManager->getByMail($mail)) {
+        if(!(preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', $password))) {
             $this->compact([
-                "error" => "Mail déja utilisé !"
+                "error" => "Votre mot de passe doit contenir au moins 8 caractères, une lettre majuscule,
+                une lette minuscule, un chiffre et un caractère spécial",
+                "error_password" => true,
             ]);
-            
+
             $this->SignupView();
             exit();
         }
 
-        if(!(preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', $password))) {
+        if(!in_array($role, $this->allowedRoles)) {
             $this->compact([
-                "error" => "Votre mot de passe doit contenir au moins 8 caractères, une lettre majuscule,
-                une lette minuscule, un chiffre et un caractère spécial"
+                "error" => "Rôle invalide !",
+                "error_role" => true,
+
             ]);
 
+            $this->SignupView();
+            exit();
+        } 
+            
+        $user->role = $role;
+
+        if($this->userManager->getByMail($mail)) {
+            $this->compact([
+                "error" => "Vous possedez déjà un compte.",
+                "error_mail" => true
+            ]);
+            
             $this->SignupView();
             exit();
         }
@@ -86,19 +102,40 @@ class UserController extends Controller {
         }
     }
 
-    function Login($mail, $password) 
+    function Login($mail, $password, $role) 
     {
+        if(!in_array($role, $this->allowedRoles)) {
+            $this->compact([
+                "error" => "Rôle invalide !",
+                "error_role" => true,
+            ]);
+
+            $this->LoginView();
+            exit();
+        } 
+
         $user = $this->userManager->getByMail($mail);
+
         if($user) {
             if (password_verify($password, $user->password)) {
                 unset($user->password);
                 $_SESSION["user"] = $user;
-                header("Location: /User");
+                header("Location: /products");
             } else {
-                $this->LoginView("Mauvais mot de passe !");
+                $this->compact([
+                    "error" => "Mot de passe incorrect !",
+                    "error_password" => true,
+                ]);
+
+                $this->LoginView();
             }
         } else {
-            $this->LoginView("Utilisateur non trouvé !");
+            $this->compact([
+                "error" => "Utilisateur introuvable !",
+                "error_mail" => true,
+            ]);
+
+            $this->LoginView();
         }
     }
 
@@ -106,6 +143,6 @@ class UserController extends Controller {
     {
         session_unset();
         session_destroy();
-        header("Location: /User/login");
+        header("Location: /login");
     }
 }

@@ -147,3 +147,29 @@ header {
 .sous-menu li a:hover{
     background-color: none;
 }
+
+/* flash message */
+.flash_message {
+    background: #ff00008f;
+    position: fixed;
+    width: fit-content;
+    padding: 10px 40px;
+    border-radius: 5px;
+    top: -100px;
+    transition: 400ms ease-in-out;
+    left: calc(50% - 200px);
+    width: 400px;
+    text-align: center;
+}
+
+.flash_message.show {
+    top: 15px;
+}
+
+.flash_message.error {
+    background: #ff00008f;
+}
+
+.flash_message.success {
+    background: #24bc008f;
+}

@@ -15,7 +15,7 @@
 
     <div class="role">
         <p class="Role">Rôle</p>
-        <select id="role" >
+        <select id="role" name="role">
             <option value=""></option>
             <option value="seller">Vendeur</option>
             <option value="buyer">Acheteur</option>
