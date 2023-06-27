@@ -79,7 +79,7 @@ td form > button{
   font-size: 28px;
 }
 
-.command-price form > button{
+.command-price > button, #close-Modal{
   background-color: unset;
   border: none;
   border: 2px solid orange;
@@ -87,4 +87,36 @@ td form > button{
   font-size: 16px;
   padding: 3px;
   border-radius: 5px;
+}
+
+.modal{
+  display: none; 
+  position: fixed; 
+  z-index: 1;
+  left: 40%;
+  top: 40%;
+  overflow: auto;
+  width: 400px;
+  height: 200px;
+  border-radius: 20px;
+  background-color: rgb(215, 215, 215);
+}
+
+.modal-content{
+  position: relative;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.modal-content #close-modal{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.modal-content p{
+  padding-top: 50px;
 }

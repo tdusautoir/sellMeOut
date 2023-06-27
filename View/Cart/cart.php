@@ -31,9 +31,16 @@
 
     <div class="command-price">
         <p class="price-total">Total : <?= $total ?> €</p>
-        <form action="/cart/command" method="POST">
-            <button>Buy <i class="fa-solid fa-cart-shopping"></i></button>
-        </form>
+        <!-- <form action="/cart/command" method="POST"> -->
+            <button id="open-modal">Buy <i class="fa-solid fa-cart-shopping"></i></button>
+        <!-- </form> -->
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <p>Êtes-vous sûr de vouloir continuer ?</p>
+                <button id="paiement">Buy <i class="fa-solid fa-cart-shopping"></i></button>
+                <button id="close-modal"><i class="fa-solid fa-xmark" ></i></button>
+            </div>
+        </div>
     </div>
     
 <?php else: ?>
