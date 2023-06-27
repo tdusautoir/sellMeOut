@@ -34,9 +34,7 @@ class ProductController extends Controller {
         $product->user_id = $_SESSION["user"]->id;
         
         if ($this->productManager->create($product)) {
-            $this->compact([
-                "success" => "Produit ajouté !"
-            ]);
+            create_flash_message("success", "Produit ajouté", FLASH_SUCCESS);
 
             $this->addProductView();
         }

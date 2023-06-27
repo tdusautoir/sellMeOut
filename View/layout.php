@@ -55,21 +55,21 @@
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="basket">
-                        <a href="/cart">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        </a>
-                    </div>
+                    <?php if(isset($_SESSION["user"]) && ($_SESSION["user"]->role == 'buyer')) : ?>
+                        <div class="basket">
+                            <a href="/cart"><i class="fa-solid fa-basket-shopping"></i></a>
+                        </div>
+                    <?php endif; ?>
                 </ul>
             </nav>
         </div>
     </header>
-    <?php if(isset($success)): ?>
-        <div class="flash_message success"><?= $success ?></div>
+    <?php if(isset_flash_message_by_type(FLASH_SUCCESS)): ?>
+        <div class="flash_message success"><?php display_flash_message_by_type(FLASH_SUCCESS) ?></div>
     <?php endif; ?>
 
-    <?php if(isset($error)): ?>
-        <div class="flash_message error"><?= $error ?></div>
+    <?php if(isset_flash_message_by_type(FLASH_ERROR)): ?>
+        <div class="flash_message error"><?php display_flash_message_by_type(FLASH_ERROR) ?></div>
     <?php endif; ?>
 
     <div class="content">
