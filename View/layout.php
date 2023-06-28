@@ -41,9 +41,8 @@
                                 <a href="/profil/products" class="ajout">Mes produits</a>
                             </div>
                         <?php endif; ?>
-                        <a href="/profil/commands">Mes commandes</a>
                     </div>
-                    
+                    <a href="/profil/commands">Mes commandes</a>
                     <div class="connect" id="connexion-menu">
                         <div class="logo-connect <?php if(isset($_SESSION["user"])) { echo "connected"; } ?>">
                             <i class="fa-solid fa-user"></i>

@@ -1,17 +1,39 @@
 .commands-list {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 30px;
     padding-top: 50px;
+    width: 100%;
 }
 
 h2{
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: 300;
+    padding-top: 80px;
 
 }
 
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.container .show-details{
+    position: sticky;
+    font-size: 20px;
+    transition: all .2s linear;
+}
+
+.container .show-details.rotate{
+    transform : rotate(180deg);
+    transition: all .3s linear;
+}
+
 .command{
-    width: fit-content;
+    width: 100%;
     background-color:#f8f7f7 ;
     border-radius:5px;
     cursor: pointer;
@@ -24,13 +46,17 @@ h2{
 
 }
 
-a .command{
-    color: black!important;
-    text-decoration: none;
-    
+.command-details{
+    font-size: 20px;
+    padding: 25px 0px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
 }
 
-a .command h3{
+.command h3{
     font-size: 20px;
     font-weight: 300;
 }
