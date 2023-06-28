@@ -8,7 +8,7 @@ class RateManager extends ModelManager{
         parent::__construct("rates");
     }
 
-    // get rate of product according to current user
+    // get rate of product according to a user
     public function getProductCurrentRate($product_id, $user_id) {
         $req = $this->bdd->prepare("SELECT * FROM " . $this->table . " WHERE product_id = :product_id AND user_id = :user_id");
         $req->bindParam(":product_id", $product_id);

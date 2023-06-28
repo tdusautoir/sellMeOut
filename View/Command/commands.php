@@ -22,18 +22,23 @@
             <?php foreach($products as $product): ?>
                 <div class="product">
                     <h3>Produit : <?= $product->name ?></h3>
+                    <h4>Résumé : </h4><p> Total : <?= $product->total ?> €, Quantité : <?= $product->quantity ?></h4>
                     <div class="commands-list">
-                        <?php dump($commands[$product->id]); ?>
                         <?php foreach($commands[$product->id] as $command): ?>
-                            <?php dump($command) ?>
-                        <?php endforeach; ?>
-                        <!-- <?php foreach($commands[$product->id] as $command): ?>
-                            <div class="command">
-                                <h4>Commande n.<?= $command->id ?></h4>
-                                <p>Total : <?= $command->total ?></p>
-                                <p>Date : <?= (new DateTime($command->date, new DateTimeZone('UTC')))->setTimezone(new DatetimeZone('Europe/Paris'))->format('d-m-Y H:i:s'); ?></p>
+                            <div class="container">
+                                <div class="command">
+                                    <h3>Commande N.<?= $command->id ?></h3>
+                                    <div class="command-details">
+                                        <p>Quantité : <?= $command->quantity ?></p>
+                                        <p>Mail : <?= $command->mail ?></p>
+                                        <p>Total : <?= $command->total ?> €</p>
+                                        <p>Note de l'utilisateur : <?= $command->rate !== false ? $command->rate : "Pas de note";  ?></p>
+                                        <p>Date : <?= (new DateTime($command->date, new DateTimeZone('UTC')))->setTimezone(new DatetimeZone('Europe/Paris'))->format('d-m-Y H:i:s'); ?></p>
+                                    </div>
+                                </div>
+                                <div class="show-details"><i class="fa-solid fa-chevron-down"></i></div>
                             </div>
-                        <?php endforeach; ?> -->
+                        <?php endforeach; ?>
                     </div>
                 </div>
             <?php endforeach; ?>

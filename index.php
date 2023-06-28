@@ -32,11 +32,13 @@ if (count($result) == 1) {
                 exit;
             }
             
+            create_flash_message("error", "Vous devez être connecté", FLASH_ERROR);
             header("Location: /login");
             exit;
         }
 
         if(!in_array($_SESSION["user"]->role, $result[0]->auth) && $result[0]->auth[0] != "*") {
+            create_flash_message("error", "Vous n'avez pas les droits", FLASH_ERROR);
             header("Location: /error");
             exit;
         }

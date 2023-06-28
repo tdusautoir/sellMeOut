@@ -5,6 +5,7 @@ class CommandController extends Controller {
     protected $commandManager;
     protected $commandDetailManager;
     protected $productManager;
+    protected $rateManager;
 
     public function showCommands() {
         $commands = [];
@@ -13,7 +14,16 @@ class CommandController extends Controller {
             case "seller":
                 $products = $this->productManager->getAllBySeller($_SESSION["user"]->id);
                 foreach($products as $product) {
+                    $product->total = 0;
+                    $product->quantity = 0;
                     $commands[$product->id] = $this->commandManager->getCommandsByProductId($product->id);
+
+                    foreach($commands[$product->id] as $command) {
+                        $command->rate = $this->rateManager->getProductCurrentRate($product->id, $product->user_id);
+                        $command->total = $command->quantity * $product->price;
+                        $product->total += $command->total;
+                        $product->quantity += $command->quantity;
+                    }
                 }
 
                 $this->compact(["products" => $products]);
