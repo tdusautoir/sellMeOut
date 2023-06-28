@@ -1,5 +1,36 @@
 .commands-list {
     display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding-top: 50px;
+}
+
+h2{
+    font-size: 20px;
+
+}
+
+.command{
+    width: fit-content;
+    background-color:#f8f7f7 ;
+    border-radius:5px;
+    cursor: pointer;
+    text-align: center;
+    padding: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
+
+}
+
+a .command{
+    color: black!important;
+    text-decoration: none;
+    
+}
+
+a .command h3{
+    font-size: 20px;
+    font-weight: 300;
 }

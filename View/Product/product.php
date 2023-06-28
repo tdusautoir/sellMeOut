@@ -24,16 +24,17 @@
     <p><?= $product->description ?></p>
 </div>
 
-<?php if($_SESSION["user"]->role == 'buyer'): ?>
+
 <div class="price">
     <p>Prix : <?= $product->price ?> €</p>
+    <?php if(isset($_SESSION["user"]) && $_SESSION["user"]->role == 'buyer'): ?>
     <form action="/cart/add" method="POST">
         <input type="hidden" name="id" value="<?= $product->id ?>">
         <input type="number" name="quantity" value="1">
         <button><i class="fa-solid fa-plus"></i></button>
     </form>
+    <?php endif; ?>
 </div>
-<?php endif; ?>
 
 <!-- 
 <p>Note moyenne du produit</p>

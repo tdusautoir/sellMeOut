@@ -31,6 +31,7 @@ th{
   font-size: 28px;
   font-weight: 300;
   padding: 8px;
+  text-align: center;
 }
 
 td{
@@ -38,6 +39,7 @@ td{
   padding-top: 8px;
   padding-bottom: 8px;
   font-size: 18px;
+  text-align: center;
 }
 
 tbody tr td:last-child{
@@ -92,22 +94,26 @@ td form > button{
   display: none; 
   position: fixed; 
   z-index: 1;
-  left: 40%;
-  top: 40%;
   overflow: auto;
-  width: 400px;
-  height: 200px;
-  border-radius: 20px;
-  background-color: rgb(215, 215, 215);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(130, 130, 130, 0.5);
 }
 
 .modal-content{
   position: relative;
+  left: 40%;
+  top: 40%;
   padding: 20px;
-  height: 100%;
+  width: 400px;
+  height: 200px;
   display: flex;
+  background-color: white;
+  border: 4px solid orange;
   justify-content: space-between;
   flex-direction: column;
+  border-radius: 20px;
+
 }
 
 .modal-content #close-modal{
@@ -118,4 +124,23 @@ td form > button{
 
 .modal-content p{
   padding-top: 50px;
+}
+
+.modal-content form{
+  display: flex;
+  justify-content: center;
+}
+
+.modal-content form > button{
+  background-color: unset;
+  border: none;
+  border-bottom: 3px solid orange;
+  font-size: 16px;
+  padding: 3px;
+}
+
+.modal-content > button{
+  background-color: unset;
+  border: none;
+  font-size: 20px;
 }
