@@ -99,6 +99,26 @@
         ]
     },
     {
+        "path":"/products/([0-9]*)/publish",
+        "controller":"Product",
+        "action":"PublishProduct",
+        "method": "POST",
+        "manager": [
+            "product"
+        ],
+        "auth": ["seller"]
+    },
+    {
+        "path":"/products/([0-9]*)/unpublish",
+        "controller":"Product",
+        "action":"UnpublishProduct",
+        "method": "POST",
+        "manager": [
+            "product"
+        ],
+        "auth": ["seller"]
+    },
+    {
         "path":"/products/search/([a-zA-Z0-9%]*)",
         "controller":"Product",
         "action":"ShowSearchProducts",
@@ -172,7 +192,8 @@
         "action": "ShowCommands",
         "method": "GET",
         "manager": [
-            "command"
+            "command",
+            "product"
         ],
         "auth": ["buyer", "seller"]
     },
