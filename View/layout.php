@@ -39,10 +39,9 @@
                         <?php if(isset($_SESSION["user"]) && ($_SESSION["user"]->role == 'seller')) : ?>
                             <div class="ProductOpt">
                                 <a href="/profil/products" class="ajout">Mes produits</a>
-                                <a href="/products/new" class="ajout">Ajout produit</a>
-                                <a href="/products/delete" class="suppression">Supprimer produit</a>
                             </div>
                         <?php endif; ?>
+                        <a href="/profil/commands">Mes commandes</a>
                     </div>
                     
                     <div class="connect" id="connexion-menu">

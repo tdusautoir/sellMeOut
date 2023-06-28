@@ -3,11 +3,13 @@
 <p><?= $product->description ?></p>
 <p><?= $product->price ?></p>
 
-<form action="/cart/add" method="POST">
-    <input type="hidden" name="id" value="<?= $product->id ?>">
-    <input type="number" name="quantity" value="1">
-    <button>Ajouter</button>
-</form>
+<?php if($_SESSION["user"]->role == 'buyer'): ?>
+    <form action="/cart/add" method="POST">
+        <input type="hidden" name="id" value="<?= $product->id ?>">
+        <input type="number" name="quantity" value="1">
+        <button>Ajouter</button>
+    </form>
+<?php endif; ?>
 
 <p>Note moyenne du produit</p>
 <div class="average-ratings ratings">

@@ -105,7 +105,7 @@ class CartController extends Controller {
             unset($_SESSION["cart"]);
         }
 
-        create_flash_message("error", "Votre commande s'est déroulé avec succès.", FLASH_ERROR);
+        create_flash_message("error", "Votre commande s'est déroulé avec succès.", FLASH_SUCCESS);
         header("location: /");
         exit;
     }

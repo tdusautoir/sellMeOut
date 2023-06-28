@@ -13,7 +13,13 @@ class ProductController extends Controller {
 
     function ShowProductsSeller() {
         $products = $this->productManager->getAllBySeller($_SESSION["user"]->id);
-        $this->compact(["products" => $products]);
+        $this->compact(["products" => $products, "seller" => true]);
+        $this->view("products");
+    }
+
+    function ShowSearchProducts($search) {
+        $products = $this->productManager->getBySearch($search);
+        $this->compact(["products" => $products, "search" => true]);
         $this->view("products");
     }
 
@@ -37,8 +43,7 @@ class ProductController extends Controller {
         
         if ($this->productManager->create($product)) {
             create_flash_message("success", "Produit ajouté", FLASH_SUCCESS);
-
-            $this->addProductView();
+            header("location: /profil/products");
         }
     }
 
