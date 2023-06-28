@@ -24,6 +24,7 @@
     <p><?= $product->description ?></p>
 </div>
 
+<?php if($_SESSION["user"]->role == 'buyer'): ?>
 <div class="price">
     <p>Prix : <?= $product->price ?> €</p>
     <form action="/cart/add" method="POST">
@@ -32,6 +33,7 @@
         <button><i class="fa-solid fa-plus"></i></button>
     </form>
 </div>
+<?php endif; ?>
 
 <!-- 
 <p>Note moyenne du produit</p>
