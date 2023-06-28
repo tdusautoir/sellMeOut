@@ -32,7 +32,7 @@
                         <!-- <img src="<?= $product->images ?>" alt=""> -->
                         <h3><?= $product->name ?></h3>
                         <p class="desc"><?= $product->description ?></p>
-                        <p class="price"><?= $product->price ?></p>
+                        <p class="price"><?= $product->price ?> €</p>
                         <?php if(isset($seller) && $seller): ?>
                             <?php if($product->public == 1): ?>
                                 <form action="/products/<?= $product->id ?>/unpublish" method="POST">

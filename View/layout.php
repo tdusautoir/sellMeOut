@@ -29,6 +29,17 @@
 </head>
 
 <body>
+    <!-- MODAL -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <p>Êtes-vous sûr de vouloir continuer ?</p>
+            <form action="/cart/command" method="POST">
+                <button id="paiement">Buy <i class="fa-solid fa-cart-shopping"></i></button>
+            </form>
+            <button id="close-modal"><i class="fa-solid fa-xmark" ></i></button>
+        </div>
+    </div>
+    <!-- MODAL END -->
     <header>
         <div class="header-content">
             <img src="/Images/Logo_SellMeOut.jpg" alt="Sell Me Out" class="logo">
@@ -40,9 +51,6 @@
                             <div class="ProductOpt">
                                 <a href="/profil/products" class="ajout">Mes produits</a>
                             </div>
-                        <?php endif; ?>
-                        <?php if(isset($_SESSION["user"])) : ?>
-                            <a href="/profil/commands">Mes commandes</a>
                         <?php endif; ?>
                     </div>
                     <a href="/profil/commands">Mes commandes</a>

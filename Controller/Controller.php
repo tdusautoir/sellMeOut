@@ -2,9 +2,16 @@
 
 namespace Controller;
 
+use Model\CommandManager;
+
 class Controller {
     protected $route;
     protected $params = [];
+
+    protected $commandManager;
+
+    protected $commandDetailManager;
+
 
     public function __construct($route)
     {
