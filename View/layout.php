@@ -53,7 +53,7 @@
                             </div>
                         <?php endif; ?>
                     </div>
-                    <a href="/profil/commands">Mes commandes</a>
+                    <a href="/profil/commands" class="myCommand">Mes commandes</a>
                     <div class="connect" id="connexion-menu">
                         <div class="logo-connect <?php if(isset($_SESSION["user"])) { echo "connected"; } ?>">
                             <i class="fa-solid fa-user"></i>
