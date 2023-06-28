@@ -34,12 +34,16 @@ class CartController extends Controller {
 
     public function addToCart($id, $quantity) {
         if(isset($_SESSION["cart"])) {
-            $cart = $_SESSION["cart"];
-            $cart[] = ["id" => $id, "quantity" => $quantity];
-            $_SESSION["cart"] = $cart;
+            if($_SESSION["cart"][$id]) {
+                $_SESSION["cart"][$id]["quantity"] = intval($_SESSION["cart"][$id]["quantity"]) + intval($quantity);
+            } else {
+                $cart = $_SESSION["cart"];
+                $cart[$id] = ["id" => $id, "quantity" => $quantity];
+                $_SESSION["cart"] = $cart;
+            }
         } else {
             $cart = [];
-            $cart[] = ["id" => $id, "quantity" => $quantity];
+            $cart[$id] = ["id" => $id, "quantity" => $quantity];
             $_SESSION["cart"] = $cart;
         }
         

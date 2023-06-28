@@ -6,7 +6,7 @@ class ProductController extends Controller {
     protected $rateManager;
 
     function ShowProducts(){
-        $products = $this->productManager->getAll();
+        $products = $this->productManager->getAllPublic();
         $this->compact(["products" => $products]);
         $this->view("products");
     }
@@ -46,6 +46,31 @@ class ProductController extends Controller {
             header("location: /profil/products");
         }
     }
+
+    function publishProduct($id) {
+        $product = new \stdClass();
+        $product->id = $id;
+        $product->public = 1;
+
+        if($this->productManager->update($product)) {
+            create_flash_message("success", "Produit publié", FLASH_SUCCESS);
+            header("Location: /profil/products");
+            exit;
+        }   
+    }
+
+    function unpublishProduct($id) {
+        $product = new \stdClass();
+        $product->id = $id;
+        $product->public = 0;
+
+        if($this->productManager->update($product)) {
+            create_flash_message("error", "Produit dépublié", FLASH_ERROR);
+            header("Location: /profil/products");
+            exit;
+        }   
+    }
+
 
     function rateProduct($id, $rating) {
         $rate = $this->rateManager->getProductCurrentRate($id, $_SESSION["user"]->id);

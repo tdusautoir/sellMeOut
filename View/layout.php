@@ -41,7 +41,9 @@
                                 <a href="/profil/products" class="ajout">Mes produits</a>
                             </div>
                         <?php endif; ?>
-                        <a href="/profil/commands">Mes commandes</a>
+                        <?php if(isset($_SESSION["user"])) : ?>
+                            <a href="/profil/commands">Mes commandes</a>
+                        <?php endif; ?>
                     </div>
                     
                     <div class="connect" id="connexion-menu">
