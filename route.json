@@ -172,7 +172,16 @@
         "action": "ShowCommands",
         "method": "GET",
         "manager": [
-            "product",
+            "command"
+        ],
+        "auth": ["buyer", "seller"]
+    },
+    {
+        "path":"/profil/commands/([0-9]*)",
+        "controller":"Command",
+        "action": "ShowCommand",
+        "method": "GET",
+        "manager": [
             "command",
             "commandDetail"
         ],

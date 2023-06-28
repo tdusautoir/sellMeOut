@@ -1,16 +1,21 @@
-<h2>Commandes</h2>
-
-<?php if(empty($commands)): ?>
-    <p>Vous n'avez passer aucune commande</p>
-<?php else: ?>
-    <div class="commands-list">
-        <?php foreach($commands as $command): ?>
-            <a href="/profil/command/<?= $command->id ?>">
-                <div class="command">
-                    <p><?= $command->total ?></p>
-                    <p><?= (new DateTime($command->date, new DateTimeZone('UTC')))->setTimezone(new DatetimeZone('Europe/Paris'))->format('d-m-Y H:i:s'); ?></p>
-                </div>
-            </a>
+<table>
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($command->products as $product): ?>
+            <tr>
+                <td>Commande n.<?= $product->id ?></td>
+                <td><?= $product->name ?></td>
+                <td class="product-price"><?= $product->price ?>€</td>
+                <td class="product-quantity"><?= $product->quantity ?></td>
+            </tr>
         <?php endforeach; ?>
-    </div>
-<?php endif; ?>
+    </tbody>
+</table>
+
+<p>Total : <?= $command->total ?> €</p>
