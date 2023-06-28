@@ -47,3 +47,8 @@ table {
 * {
     box-sizing: border-box;
 }
+
+*:link, *:visited{
+    text-decoration:none;
+    color: black;
+}

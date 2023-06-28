@@ -12,7 +12,6 @@
         <label for="password">Mot de passe</label>
         <input class="error" type="password" id="password" name="password">
     </div>
-
     <button type="submit">Connexion</button>
 </form>
 

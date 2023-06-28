@@ -6,13 +6,16 @@
     <?php if($_SESSION["user"]->role == "buyer"): ?>
     <div class="commands-list">
         <?php foreach($commands as $command): ?>
-                <a href="/profil/commands/<?= $command->id ?>">
-                    <div class="command">
-                        <h3>Commande n.<?= $command->id ?></h3>
-                        <p>Total : <?= $command->total ?></p>
-                        <p>Date : <?= (new DateTime($command->date, new DateTimeZone('UTC')))->setTimezone(new DatetimeZone('Europe/Paris'))->format('d-m-Y H:i:s'); ?></p>
+            <div class="container">
+                <a href="/profil/commands/<?= $command->id ?>" class="command">
+                    <h3>Commande N.<?= $command->id ?></h3>
+                    <div class="command-details">
+                        <p><?= $command->total ?> €</p>
+                        <p><?= (new DateTime($command->date, new DateTimeZone('UTC')))->setTimezone(new DatetimeZone('Europe/Paris'))->format('d-m-Y H:i:s'); ?></p>
                     </div>
                 </a>
+                <div class="show-details"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
         <?php endforeach; ?>
     </div>
     <?php elseif($_SESSION["user"]->role == "seller"): ?>

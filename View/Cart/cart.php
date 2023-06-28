@@ -29,11 +29,20 @@
         </tbody>
     </table>
 
-    <p>Total : <?= $total ?> €</p>
-
-    <form action="/cart/command" method="POST">
-        <button>Commander</button>
-    </form>
+    <div class="command-price">
+        <p class="price-total">Total : <?= $total ?> €</p>
+            <button id="open-modal">Buy <i class="fa-solid fa-cart-shopping"></i></button>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <p>Êtes-vous sûr de vouloir continuer ?</p>
+                <form action="/cart/command" method="POST">
+                    <button id="paiement">Buy <i class="fa-solid fa-cart-shopping"></i></button>
+                </form>
+                <button id="close-modal"><i class="fa-solid fa-xmark" ></i></button>
+            </div>
+        </div>
+    </div>
+    
 <?php else: ?>
     <p>Votre panier est vide</p>
 <?php endif; ?>

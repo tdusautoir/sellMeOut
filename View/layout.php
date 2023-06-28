@@ -41,11 +41,10 @@
                                 <a href="/profil/products" class="ajout">Mes produits</a>
                             </div>
                         <?php endif; ?>
-                        <?php if(isset($_SESSION["user"])) : ?>
-                            <a href="/profil/commands">Mes commandes</a>
-                        <?php endif; ?>
                     </div>
-                    
+                    <?php if(isset($_SESSION["user"])) : ?>
+                        <a href="/profil/commands">Mes commandes</a>
+                    <?php endif; ?>
                     <div class="connect" id="connexion-menu">
                         <div class="logo-connect <?php if(isset($_SESSION["user"])) { echo "connected"; } ?>">
                             <i class="fa-solid fa-user"></i>
