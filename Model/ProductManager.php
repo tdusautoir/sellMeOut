@@ -8,6 +8,15 @@ class ProductManager extends ModelManager{
         parent::__construct("product");
     }
 
+    public function getAllPublic()
+    {
+        $req = $this->bdd->prepare("SELECT * FROM product 
+        WHERE product.public = 1");
+        $req->execute();
+        $req->setFetchMode(\PDO::FETCH_OBJ);
+        return $req->fetchAll();
+    }
+
     public function getBySearch($search)
     {
         $req = $this->bdd->prepare("SELECT * FROM product 
