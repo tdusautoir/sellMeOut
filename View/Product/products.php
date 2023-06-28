@@ -23,7 +23,7 @@
             <?php endif; ?>
         <?php else: ?> 
             <?php foreach($products as $product): 
-                if($product->public == 1 || isset($seller) && $seller){?>
+                if($product->public == 1 || isset($seller) && $seller) { ?>
                     <div class="product-card" data-id="<?= $product->id ?>">
                         <!-- <img src="<?= $product->images ?>" alt=""> -->
                         <h3><?= $product->name ?></h3>

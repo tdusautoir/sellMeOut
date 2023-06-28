@@ -192,7 +192,8 @@
         "action": "ShowCommands",
         "method": "GET",
         "manager": [
-            "command"
+            "command",
+            "product"
         ],
         "auth": ["buyer", "seller"]
     },
