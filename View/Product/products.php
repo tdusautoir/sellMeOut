@@ -6,14 +6,19 @@
         <h2>Liste des produits</h2>
     <?php endif; ?>
         <div class="search-bar-item">
+            <?php 
+                $url = "/products";
+                if(isset($seller) && $seller) {
+                    $url = "/profil/products";
+                }
+            ?>
+
             <?php if(isset($search) && $search): ?>
-            <a href="/products" class="reset-search"><i class="fa-solid fa-xmark"></i></a>
+                <a href="<?= $url ?>" class="reset-search"><i class="fa-solid fa-xmark"></i></a>
             <?php endif; ?>  
             <input type="search" id="search" class="searchbar">
-            <a href="/products/search/" id="search-btn" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    
+            <a href="<?= $url."/search/" ?>" id="search-btn" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></a>     
         </div>
-        
     </div>
 
     <div class="products-list">

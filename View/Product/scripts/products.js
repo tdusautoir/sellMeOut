@@ -4,6 +4,10 @@ document.querySelectorAll('.product-card').forEach(product => {
     });
 });
 
-document.getElementById("search").addEventListener("keyup", function(event) {
-    document.getElementById("search-btn").href = encodeURI("/products/search/" + event.target.value);
+const search = document.getElementById("search");
+const searchBtn = document.getElementById("search-btn");
+const searchUri = searchBtn.href;
+
+search.addEventListener("keyup", function(event) {
+    searchBtn.href = encodeURI(searchUri + event.target.value);
 });

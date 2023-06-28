@@ -187,15 +187,28 @@
         "auth": ["seller"]
     },
     {
+        "path":"/profil/products/search/([a-zA-Z0-9%]*)",
+        "controller":"Product",
+        "action": "ShowSearchProductsSeller",
+        "method": "GET",
+        "manager": [
+            "product",
+            "command",
+            "commandDetail"
+        ],
+        "auth": ["seller"]
+    },
+    {
         "path":"/profil/commands",
         "controller":"Command",
         "action": "ShowCommands",
         "method": "GET",
         "manager": [
             "command",
-            "product"
+            "product",
+            "rate"
         ],
-        "auth": ["buyer", "seller"]
+        "auth": ["*"]
     },
     {
         "path":"/profil/commands/([0-9]*)",
@@ -206,6 +219,6 @@
             "command",
             "commandDetail"
         ],
-        "auth": ["buyer", "seller"]
+        "auth": ["*"]
     }
 ]
