@@ -1,5 +1,5 @@
 * {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    font-family: 'Rubik', sans-serif;
 }
 
 html{
@@ -23,7 +23,7 @@ header {
 }
 
 .header-content .logo{
-    width: 100px;
+    font-size: 22px;
 }
 
 .header-content nav ul {
@@ -62,7 +62,7 @@ header {
     visibility: hidden;
     position: absolute;
     left: -2px;
-    bottom: -46px;
+    bottom: -38px;
     line-height: 1.85;
     background-color: rgba(240, 240, 240, 0.6);
     border-radius: 0px 0px 10px 10px;
@@ -132,7 +132,7 @@ header {
     font-size: 14px;
     position: absolute;
     left: -20px;
-    bottom: -36px;
+    bottom: -28px;
     width: fit-content;
     height: 30px;
     padding: 5px;
@@ -219,6 +219,7 @@ header {
   
   .modal-content p{
     padding-top: 50px;
+    text-align: center;
   }
   
   .modal-content form{
@@ -227,17 +228,20 @@ header {
   }
   
   .modal-content form > button{
-    background-color: unset;
+    background-color: orange;
+    color: white;
     border: none;
-    border-bottom: 3px solid orange;
     font-size: 16px;
-    padding: 3px;
+    padding: 4px 12px;
+    cursor: pointer;
+    border-radius: 4px;
   }
   
   .modal-content > button{
     background-color: unset;
     border: none;
     font-size: 20px;
+    cursor: pointer;
   }
 
   #close-Modal{

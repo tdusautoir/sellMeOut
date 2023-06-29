@@ -8,6 +8,15 @@
     <script src="https://kit.fontawesome.com/49dbd7732f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/reset.css">
     <link rel="stylesheet" href="/style.css">
+
+    <!-- FONT  -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!--  -->
+
     <?php if(!empty($headers)): ?>
         <?php foreach($headers as $header): ?>
             <?= $header ?>
@@ -42,7 +51,8 @@
     <!-- MODAL END -->
     <header>
         <div class="header-content">
-            <img src="/Images/Logo_SellMeOut.jpg" alt="Sell Me Out" class="logo">
+            <!-- <img src="/Images/Logo_SellMeOut.jpg" alt="Sell Me Out" class="logo"> -->
+            <div class="logo"> SELL ME OUT</div>
             <nav>
                 <ul>
                     <div class="Deroulant">
