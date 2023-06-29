@@ -29,11 +29,13 @@
             <?php foreach($products as $product): 
                 if($product->public == 1 || isset($seller) && $seller) { ?>
                     <div class="product-card" data-id="<?= $product->id ?>">
-                        <!-- <img src="<?= $product->images ?>" alt=""> -->
-                        <h3><?= $product->name ?></h3>
-                        <div class="product-text">
-                            <p class="desc"><?= $product->description ?></p>
-                            <p class="price"><?= $product->price ?> €</p>
+                        <img src="../../Images/ordinateur.png" alt="">
+                        <div class="Right">
+                            <h3><?= $product->name ?></h3>
+                            <div class="product-text">
+                                <p class="desc"><?= $product->description ?></p>
+                                <p class="price"><?= $product->price ?> €</p>
+                            </div>
                         </div>
                         
                         <?php if(isset($seller) && $seller): ?>
