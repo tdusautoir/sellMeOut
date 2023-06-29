@@ -63,4 +63,16 @@ class ProductManager extends ModelManager{
         $req->setFetchMode(\PDO::FETCH_OBJ);
         return $req->fetchAll();
     }
+
+    public function getAllBySellerAndSearch($seller_id, $search)
+    {
+        $req = $this->bdd->prepare("SELECT * FROM product 
+        WHERE product.name LIKE :search AND product.user_id = :seller_id");
+        $req->bindValue(":search", "%" . $search . "%");
+        $req->bindParam(":seller_id", $seller_id);
+        $req->execute();
+        $req->setFetchMode(\PDO::FETCH_OBJ);
+        return $req->fetchAll();
+    }
+
 }

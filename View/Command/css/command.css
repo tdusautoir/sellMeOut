@@ -43,3 +43,7 @@ p{
   font-weight: 200;
   text-align: center;
 }
+
+.product-rating .star {
+  cursor: pointer;
+}

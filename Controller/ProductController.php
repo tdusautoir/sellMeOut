@@ -22,12 +22,24 @@ class ProductController extends Controller {
         $this->compact(["products" => $products, "search" => true]);
         $this->view("products");
     }
+    
+    function ShowSearchProductsSeller($search) {
+        $products = $this->productManager->getAllBySellerAndSearch($_SESSION["user"]->id, $search);
+        $this->compact(["products" => $products, "search" => true, "seller" => true]);
+        $this->view("products");
+    }
 
     function showProduct($id) {
         if(isset($_SESSION["user"])) {
             $product = $this->productManager->getByIdWithRatings($id);
         } else {
             $product = $this->productManager->getById($id);
+        }
+
+        if($product->public == 0 && $product->user_id != $_SESSION["user"]->id) {
+            create_flash_message("error", "Vous n'avez pas accès à ce produit", FLASH_ERROR);
+            header("Location: /products");
+            exit;
         }
 
         $this->compact(["product" => $product]);
@@ -75,7 +87,7 @@ class ProductController extends Controller {
     function rateProduct($id, $rating) {
         $rate = $this->rateManager->getProductCurrentRate($id, $_SESSION["user"]->id);
 
-        if ($rate) {
+        if ($rate !== false) {
             $rate->rating = $rating;
             if ($this->rateManager->update($rate)) {
                 $this->json([

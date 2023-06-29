@@ -13,7 +13,7 @@ h2{
 
 }
 
-.container{
+.container {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -21,18 +21,18 @@ h2{
     gap: 20px;
 }
 
-.container .show-details{
+.container .show-details {
     position: sticky;
     font-size: 20px;
     transition: all .2s linear;
 }
 
-.container .show-details.rotate{
+.container .show-details.rotate {
     transform : rotate(180deg);
     transition: all .3s linear;
 }
 
-.command{
+.command {
     width: 100%;
     background-color:rgb(240, 245, 250) ;
     border-radius:5px;
@@ -46,7 +46,7 @@ h2{
 
 }
 
-.command-details{
+.command-details {
     font-size: 20px;
     padding: 25px 0px;
     display: none;
