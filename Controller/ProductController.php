@@ -50,6 +50,7 @@ class ProductController extends Controller {
         $product->description = $description;
         $product->price = $price;
         $product->user_id = $_SESSION["user"]->id;
+        $product->img_path = "/Images/RandomImage/".rand(1,5).".png";
         
         if ($this->productManager->create($product)) {
             create_flash_message("success", "Produit ajouté", FLASH_SUCCESS);

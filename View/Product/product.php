@@ -38,9 +38,8 @@
 
 <?php if(!(isset($seller) && $seller)): ?>
     <div class="seller">
-        <p>Vendeur : <?= $product->user->pseudo ?></p>
-        <p>Mail du vendeur : <?= $product->user->mail ?></p>
-        <div>Note moyenne du vendeur :
+        <p>Vendeur : <?= $product->user->pseudo ?>
+        ( 
             <?php if (isset($product->user->averageRating)) : ?>
                 <?php for ($i = 1; $i <= 5; $i++) : ?>
                         <?php if ($i <= $product->user->averageRating) : ?>
@@ -51,8 +50,7 @@
                 <?php endfor; ?>
             <?php else: ?>
                 Aucune note
-            <?php endif; ?>
-            
-        </div>
+            <?php endif; ?> )</p>
+        <p>Contactez le vendeur à "<?= $product->user->mail ?>"</p>
     </div>
 <?php endif; ?>

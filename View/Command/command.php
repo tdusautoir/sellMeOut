@@ -37,8 +37,9 @@
 
 <p>Total : <?= $command->total ?> €</p>
 
-<div class="seller-ratings">
+<div class="seller-product-ratings">
     <?php foreach($command->sellers as $seller): ?>
+    <div class="seller-ratings">
         </p>Notez le vendeur <?= $seller->pseudo ?> 
         ( Produit(s) :  
         <?php foreach($seller->products as $index => $product):
@@ -57,6 +58,7 @@
                     <i class="far fa-star star"></i>
                 <?php endif; ?>
             <?php endfor; ?>
+        </div>
         </div>
     <?php endforeach; ?>
 </div>

@@ -42,3 +42,15 @@ p{
 .product-rating .star {
   cursor: pointer;
 }
+
+.seller-product-ratings{
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.seller-ratings{
+  display: flex;
+  font-size: 18px;
+}
