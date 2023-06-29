@@ -142,7 +142,6 @@ header {
     transition: all 0.3s linear;
     opacity: 0;
     visibility: hidden;
-
 }
 
 .sous-menu.visible{
@@ -156,6 +155,10 @@ header {
 
 .sous-menu li a:hover{
     background-color: none;
+}
+
+.fas.star {
+    color: orange;
 }
 
 /* flash message */
@@ -193,9 +196,9 @@ header {
     width: 100vw;
     height: 100vh;
     background-color: rgba(130, 130, 130, 0.5);
-  }
-  
-  .modal-content{
+}
+
+.modal-content{
     position: relative;
     left: 40%;
     top: 40%;
@@ -208,26 +211,25 @@ header {
     justify-content: space-between;
     flex-direction: column;
     border-radius: 20px;
-  
-  }
-  
-  .modal-content #close-modal{
+}
+
+.modal-content #close-modal{
     position: absolute;
     right: 20px;
     top: 20px;
-  }
-  
-  .modal-content p{
+}
+
+.modal-content p{
     padding-top: 50px;
     text-align: center;
-  }
-  
-  .modal-content form{
+}
+
+.modal-content form{
     display: flex;
     justify-content: center;
-  }
-  
-  .modal-content form > button{
+}
+
+.modal-content form > button{
     background-color: orange;
     color: white;
     border: none;
@@ -235,16 +237,16 @@ header {
     padding: 4px 12px;
     cursor: pointer;
     border-radius: 4px;
-  }
-  
-  .modal-content > button{
+}
+
+.modal-content > button{
     background-color: unset;
     border: none;
     font-size: 20px;
     cursor: pointer;
-  }
+}
 
-  #close-Modal{
+#close-Modal{
     background-color: unset;
     border: none;
     border: 2px solid orange;
@@ -252,4 +254,4 @@ header {
     font-size: 16px;
     padding: 3px;
     border-radius: 5px;
-  }
+}

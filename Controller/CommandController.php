@@ -5,7 +5,8 @@ class CommandController extends Controller {
     protected $commandManager;
     protected $commandDetailManager;
     protected $productManager;
-    protected $rateManager;
+    protected $rateProductManager;
+    protected $userManager;
 
     public function showCommands() {
         $commands = [];
@@ -19,7 +20,7 @@ class CommandController extends Controller {
                     $commands[$product->id] = $this->commandManager->getCommandsByProductId($product->id);
 
                     foreach($commands[$product->id] as $command) {
-                        $command->rate = $this->rateManager->getProductCurrentRate($product->id, $command->user_id);
+                        $command->rate = $this->rateProductManager->getProductCurrentRate($product->id, $command->user_id);
 
                         if($command->rate !== false) {
                             $command->rate = $command->rate->rating;
@@ -48,9 +49,14 @@ class CommandController extends Controller {
     public function showCommand($id) {
         $command = $this->commandManager->getById($id);
         $command->products = $this->commandDetailManager->getProductsByCommandId($command->id);
+        $command->sellers = [];
 
         foreach($command->products as $product) {
-            $product->rate = $this->rateManager->getProductCurrentRate($product->id, $command->user_id);
+            if(!isset($command->sellers[$product->user_id])) {
+                $command->sellers[$product->user_id] = $this->userManager->getByIdWithUserRating($product->user_id, $_SESSION["user"]->id);
+            }
+            
+            $product->rate = $this->rateProductManager->getProductCurrentRate($product->id, $command->user_id);
 
             if($product->rate !== false) {
                 $product->rate = $product->rate->rating;

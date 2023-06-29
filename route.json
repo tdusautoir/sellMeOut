@@ -95,7 +95,8 @@
         "method": "GET",
         "manager": [
             "product",
-            "rate"
+            "rateProduct",
+            "user"
         ]
     },
     {
@@ -134,7 +135,7 @@
         "method": "POST",
         "manager": [
             "product",
-            "rate"
+            "rateProduct"
         ],
         "auth": ["*"]
     },
@@ -206,7 +207,7 @@
         "manager": [
             "command",
             "product",
-            "rate"
+            "rateProduct"
         ],
         "auth": ["*"]
     },
@@ -218,7 +219,19 @@
         "manager": [
             "command",
             "commandDetail",
-            "rate"
+            "rateProduct",
+            "user"
+        ],
+        "auth": ["*"]
+    },
+    {
+        "path": "/user/([0-9]*)/rate",
+        "controller": "User",
+        "action": "rateUser",
+        "method": "POST",
+        "manager": [
+            "user",
+            "rateUser"
         ],
         "auth": ["*"]
     }

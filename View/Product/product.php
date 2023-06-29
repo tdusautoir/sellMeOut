@@ -1,17 +1,17 @@
 <div class="title-note">
     <h1><?= $product->name ?></h1>
     <div class="average-ratings ratings">
-        <?php for ($i = 1; $i <= 5; $i++) : ?>
-            <?php if (isset($product->averageRating)) : ?>
-                <?php if ($i <= $product->averageRating) : ?>
-                    <i class="fas fa-star star"></i>
-                <?php else : ?>
-                    <i class="far fa-star star"></i>
-                <?php endif; ?>
-            <?php else : ?>
-                <i class="far fa-star star"></i>
-            <?php endif; ?>
-        <?php endfor; ?>
+        <?php if (isset($product->averageRating)) : ?>
+            <?php for ($i = 1; $i <= 5; $i++) : ?>
+                    <?php if ($i <= $product->averageRating) : ?>
+                        <i class="fas fa-star star"></i>
+                    <?php else : ?>
+                        <i class="far fa-star star"></i>
+                    <?php endif; ?>
+            <?php endfor; ?>
+        <?php else : ?>
+            Aucune note
+        <?php endif; ?>
     </div>
 </div>
 
@@ -36,33 +36,21 @@
     <?php endif; ?>
 </div>
 
-<!-- 
-<p>Note moyenne du produit</p>
-<div class="average-ratings ratings">
-    <?php for ($i = 1; $i <= 5; $i++) : ?>
-        <?php if (isset($product->averageRating)) : ?>
-            <?php if ($i <= $product->averageRating) : ?>
-                <i class="fas fa-star star"></i>
-            <?php else : ?>
-                <i class="far fa-star star"></i>
-            <?php endif; ?>
-        <?php else : ?>
-            <i class="far fa-star star"></i>
+<div class="seller">
+    <p>Vendeur : <?= $product->user->pseudo ?></p>
+    <p>Mail du vendeur : <?= $product->user->mail ?></p>
+    <div>Note moyenne du vendeur :
+        <?php if (isset($product->user->averageRating)) : ?>
+            <?php for ($i = 1; $i <= 5; $i++) : ?>
+                    <?php if ($i <= $product->user->averageRating) : ?>
+                        <i class="fas fa-star star"></i>
+                    <?php else : ?>
+                        <i class="far fa-star star"></i>
+                    <?php endif; ?>
+            <?php endfor; ?>
+        <?php else: ?>
+            Aucune note
         <?php endif; ?>
-    <?php endfor; ?>
+        
+    </div>
 </div>
-
-<p>Note moyenne du vendeur : </p>
-<div class="seller-ratings ratings">
-    <?php for ($i = 1; $i <= 5; $i++) : ?>
-        <?php if (isset($product->sellerRating)) : ?>
-            <?php if ($i <= $product->sellerRating) : ?>
-                <i class="fas fa-star star"></i>
-            <?php else : ?>
-                <i class="far fa-star star"></i>
-            <?php endif; ?>
-        <?php else : ?>
-            <i class="far fa-star star"></i>
-        <?php endif; ?>
-    <?php endfor; ?>
-</div> -->

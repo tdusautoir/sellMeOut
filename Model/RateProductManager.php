@@ -1,11 +1,11 @@
 <?php
 namespace Model;
 
-class RateManager extends ModelManager{
+class RateProductManager extends ModelManager{
 
     public function __construct()
     {
-        parent::__construct("rates");
+        parent::__construct("rates_product");
     }
 
     // get rate of product according to a user

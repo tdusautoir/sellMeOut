@@ -8,7 +8,7 @@ class CommandManager extends ModelManager {
     }
 
     public function getByUser($user_id) {
-        $req = $this->bdd->prepare("SELECT * FROM " . $this->table . " WHERE user_id = :user_id");
+        $req = $this->bdd->prepare("SELECT * FROM " . $this->table . " WHERE user_id = :user_id ORDER BY date DESC");
         $req->bindParam(":user_id", $user_id);
         $req->execute();
         $req->setFetchMode(\PDO::FETCH_OBJ);

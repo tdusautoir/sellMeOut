@@ -40,3 +40,30 @@
 </table>
 
 <p>Total : <?= $command->total ?> €</p>
+
+<div class="seller-ratings">
+    <?php foreach($command->sellers as $seller): ?>
+        </p>Notez le vendeur <?= $seller->pseudo ?> 
+        ( Produit(s) :  <?php foreach($command->products as $product): 
+            $count = 0;
+            if($product->user_id == $seller->id): ?>
+                <?= $product->name . ($count > 0 ? ", " : "") ?>
+                <?php $count++; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>) :
+        </p>
+        <div class="seller-rating" data-id=<?= $seller->id ?>>
+            <?php for ($i = 1; $i <= 5; $i++) : ?>
+                <?php if (isset($seller->rating)) : ?>
+                    <?php if ($i <= $seller->rating) : ?>
+                        <i class="fas fa-star star"></i>
+                    <?php else : ?>
+                        <i class="far fa-star star"></i>
+                    <?php endif; ?>
+                <?php else : ?>
+                    <i class="far fa-star star"></i>
+                <?php endif; ?>
+            <?php endfor; ?>
+        </div>
+    <?php endforeach; ?>
+</div>

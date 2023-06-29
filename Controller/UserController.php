@@ -3,26 +3,8 @@ namespace Controller;
 
 class UserController extends Controller {
     protected $userManager;
+    protected $rateUserManager;
     protected $allowedRoles = ["buyer", "seller"];
-
-    // function UpdateUser()
-    // {
-    //     $user = new \stdClass();
-    //     $user->id = 3;
-    //     $user->mail = "test2@test2.fr";
-    //     $user->password = password_hash("imverysecure",PASSWORD_DEFAULT);
-    //     $user->pseudo = "test2";
-    //     if ($this->userManager->update($user)) {
-    //         echo "Utilisateur modifié !";
-    //     }
-    // }
-
-    // function DeleteUser()
-    // {
-    //     if ($this->userManager->delete("3")) {
-    //         echo "Utilisateur supprimé !";
-    //     }
-    // }
 
     function SignupView() 
     {
@@ -109,5 +91,40 @@ class UserController extends Controller {
         session_unset();
         session_destroy();
         header("Location: /login");
+    }
+
+    function RateUser($id, $rating) {
+        $rate = $this->rateUserManager->getUserCurrentRate($id, $_SESSION["user"]->id);
+
+        if ($rate !== false) {
+            $rate->rating = $rating;
+            if ($this->rateUserManager->update($rate)) {
+                $this->json([
+                    "success" => true
+                ]);
+
+                exit;
+            }
+        }
+
+        $rate = new \stdClass();
+        $rate->seller_id = $id;
+        $rate->user_id = $_SESSION["user"]->id;
+        $rate->rating = $rating;
+
+        if ($this->rateUserManager->create($rate)) {
+            $this->json([
+                "rate" => $rate,
+                "success" => true
+            ]);
+
+            exit;
+        }
+
+        $this->json([
+            "success" => false
+        ]);
+
+        exit;
     }
 }
