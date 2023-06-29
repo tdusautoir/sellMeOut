@@ -81,3 +81,8 @@ h2{
     height: 50px;
     border-bottom: 5px solid orange;
 }
+
+p{
+    font-size: 18px;
+    padding-top: 20px;
+}
