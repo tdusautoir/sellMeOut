@@ -32,7 +32,23 @@
                                         <p>Quantité : <?= $command->quantity ?></p>
                                         <p>Mail : <?= $command->mail ?></p>
                                         <p>Total : <?= $command->total ?> €</p>
-                                        <p>Note de l'utilisateur : <?= $command->rate !== false ? $command->rate : "Pas de note";  ?></p>
+                                        <p>Note sur le produit : 
+                                            <?php if($command->rate): ?>
+                                                <?php for ($i = 1; $i <= 5; $i++) : ?>
+                                                    <?php if (isset($command->rate)) : ?>
+                                                        <?php if ($i <= $command->rate) : ?>
+                                                            <i class="fas fa-star star"></i>
+                                                        <?php else : ?>
+                                                            <i class="far fa-star star"></i>
+                                                        <?php endif; ?>
+                                                    <?php else : ?>
+                                                        <i class="far fa-star star"></i>
+                                                    <?php endif; ?>
+                                                <?php endfor; ?>
+                                            <?php else: ?>
+                                                Aucune note
+                                            <?php endif; ?>
+                                        </p>
                                         <p>Date : <?= (new DateTime($command->date, new DateTimeZone('UTC')))->setTimezone(new DatetimeZone('Europe/Paris'))->format('d-m-Y H:i:s'); ?></p>
                                     </div>
                                 </div>

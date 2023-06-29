@@ -182,3 +182,7 @@ header {
 .flash_message.success {
     background: #24bc008f;
 }
+
+.fas.fa-star {
+    color: orange;
+}

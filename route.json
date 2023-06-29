@@ -217,7 +217,8 @@
         "method": "GET",
         "manager": [
             "command",
-            "commandDetail"
+            "commandDetail",
+            "rate"
         ],
         "auth": ["*"]
     }

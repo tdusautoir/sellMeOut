@@ -87,7 +87,7 @@ class ProductController extends Controller {
     function rateProduct($id, $rating) {
         $rate = $this->rateManager->getProductCurrentRate($id, $_SESSION["user"]->id);
 
-        if ($rate) {
+        if ($rate !== false) {
             $rate->rating = $rating;
             if ($this->rateManager->update($rate)) {
                 $this->json([
