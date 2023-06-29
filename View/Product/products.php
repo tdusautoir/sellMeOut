@@ -34,7 +34,11 @@
             <?php foreach($products as $product): 
                 if($product->public == 1 || isset($seller) && $seller) { ?>
                     <div class="product-card" data-id="<?= $product->id ?>">
-                        <img src="../../Images/ordinateur.png" alt="">
+                        <!-- <?php
+                        $imagePath = $_GET['image'];
+                        echo '<img src="' . $imagePath . '" alt="Image aléatoire">';
+                        ?> -->
+                        <img src="../../Images/RandomImage/3.png" alt="RandomImages">
                         <div class="Right">
                             <h3><?= $product->name ?></h3>
                             <div class="product-text">
