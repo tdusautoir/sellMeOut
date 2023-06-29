@@ -34,26 +34,29 @@
             <?php foreach($products as $product): 
                 if($product->public == 1 || isset($seller) && $seller) { ?>
                     <div class="product-card" data-id="<?= $product->id ?>">
-                        <img src="../../Images/ordinateur.png" alt="">
+                        <!-- <?php
+                        $imagePath = $_GET['image'];
+                        echo '<img src="' . $imagePath . '" alt="Image aléatoire">';
+                        ?> -->
+                        <img src="../../Images/RandomImage/3.png" alt="RandomImages">
                         <div class="Right">
                             <h3><?= $product->name ?></h3>
                             <div class="product-text">
                                 <p class="desc"><?= $product->description ?></p>
                                 <p class="price"><?= $product->price ?> €</p>
                             </div>
-                        </div>
-                        
-                        <?php if(isset($seller) && $seller): ?>
+                            <?php if(isset($seller) && $seller): ?>
                             <?php if($product->public == 1): ?>
                                 <form action="/products/<?= $product->id ?>/unpublish" method="POST">
-                                    <button>Dépublié</button>
+                                    <button class="publish">Publié</button>
                                 </form>
                             <?php else: ?>
                                 <form action="/products/<?= $product->id ?>/publish" method="POST">
-                                    <button>Publié</button>
+                                    <button class="unpublish">Dépublié</button>
                                 </form>
                             <?php endif; ?>
-                        <?php endif ?>
+                            <?php endif ?>
+                        </div>
                     </div>
             <?php }endforeach; ?>
         <?php endif; ?>
@@ -61,5 +64,7 @@
 </div>
 
 <?php if(isset($seller) && $seller): ?>
-    <a href="/products/new">Ajouter un produit</a>
+    <div class="button-add-product">
+        <a href="/products/new" class="add-product">Ajouter un produit</a>
+    </div>
 <?php endif; ?>
