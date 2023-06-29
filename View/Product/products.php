@@ -16,7 +16,7 @@
             <?php if(isset($search) && $search): ?>
                 <a href="<?= $url ?>" class="reset-search"><i class="fa-solid fa-xmark"></i></a>
             <?php endif; ?>  
-            <input type="search" id="search" class="searchbar">
+            <input type="search" id="search" class="searchbar" placeholder="Search">
             <a href="<?= $url."/search/" ?>" id="search-btn" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></a>     
         </div>
     </div>
@@ -34,10 +34,15 @@
             <?php foreach($products as $product): 
                 if($product->public == 1 || isset($seller) && $seller) { ?>
                     <div class="product-card" data-id="<?= $product->id ?>">
-                        <!-- <img src="<?= $product->images ?>" alt=""> -->
-                        <h3><?= $product->name ?></h3>
-                        <p class="desc"><?= $product->description ?></p>
-                        <p class="price"><?= $product->price ?></p>
+                        <img src="../../Images/ordinateur.png" alt="">
+                        <div class="Right">
+                            <h3><?= $product->name ?></h3>
+                            <div class="product-text">
+                                <p class="desc"><?= $product->description ?></p>
+                                <p class="price"><?= $product->price ?> €</p>
+                            </div>
+                        </div>
+                        
                         <?php if(isset($seller) && $seller): ?>
                             <?php if($product->public == 1): ?>
                                 <form action="/products/<?= $product->id ?>/unpublish" method="POST">
