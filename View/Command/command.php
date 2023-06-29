@@ -1,6 +1,3 @@
-<span>
-
-</span>
 <table>
     <thead>
         <tr>
