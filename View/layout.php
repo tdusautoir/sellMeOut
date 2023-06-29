@@ -22,7 +22,7 @@
 
                 setTimeout(() => {
                     flashMessage.classList.remove("show");
-                }, 2000)
+                }, 4000)
             });
         });
     </script>

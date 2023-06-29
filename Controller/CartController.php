@@ -33,6 +33,12 @@ class CartController extends Controller {
     }
 
     public function addToCart($id, $quantity) {
+        if($quantity <= 0) {
+            create_flash_message("error", "La quantité doit être supérieur à 0", FLASH_ERROR);
+            header("location: /products/" . $id);
+            exit;
+        }
+
         if(isset($_SESSION["cart"])) {
             if($_SESSION["cart"][$id]) {
                 $_SESSION["cart"][$id]["quantity"] = intval($_SESSION["cart"][$id]["quantity"]) + intval($quantity);
@@ -109,8 +115,9 @@ class CartController extends Controller {
             unset($_SESSION["cart"]);
         }
 
-        create_flash_message("error", "Votre commande s'est déroulé avec succès.", FLASH_SUCCESS);
-        header("location: /");
+        create_flash_message("command-success", "Récapitulatif de votre commande.", "command-success");
+        create_flash_message("success", "Merci pour votre commande.", FLASH_SUCCESS);
+        header("location: /profil/commands/". $commandId);
         exit;
     }
 }

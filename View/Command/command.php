@@ -1,6 +1,11 @@
 <span>
 
 </span>
+
+<?php if(isset_flash_message_by_type("command-success")): ?>
+    <h1><?= display_flash_message_by_type("command-success"); ?></h1>
+<?php endif; ?>
+
 <table>
     <thead>
         <tr>
