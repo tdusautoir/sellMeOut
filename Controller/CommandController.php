@@ -55,7 +55,9 @@ class CommandController extends Controller {
             if(!isset($command->sellers[$product->user_id])) {
                 $command->sellers[$product->user_id] = $this->userManager->getByIdWithUserRating($product->user_id, $_SESSION["user"]->id);
             }
-            
+                
+            $command->sellers[$product->user_id]->products[] = $product;
+
             $product->rate = $this->rateProductManager->getProductCurrentRate($product->id, $command->user_id);
 
             if($product->rate !== false) {

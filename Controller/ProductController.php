@@ -40,7 +40,7 @@ class ProductController extends Controller {
             exit;
         }
 
-        $this->compact(["product" => $product]);
+        $this->compact(["product" => $product, "seller" => $product->user_id == $_SESSION["user"]->id]);
         $this->view("product");
     }
 

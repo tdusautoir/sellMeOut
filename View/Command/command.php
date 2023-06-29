@@ -40,13 +40,10 @@
 <div class="seller-ratings">
     <?php foreach($command->sellers as $seller): ?>
         </p>Notez le vendeur <?= $seller->pseudo ?> 
-        ( Produit(s) :  <?php foreach($command->products as $product): 
-            $count = 0;
-            if($product->user_id == $seller->id): ?>
-                <?= $product->name . ($count > 0 ? ", " : "") ?>
-                <?php $count++; ?>
-            <?php endif; ?>
-        <?php endforeach; ?>) :
+        ( Produit(s) :  
+        <?php foreach($seller->products as $index => $product):
+             echo $product->name . ($index < count($seller->products) - 1 ? ", " : "");
+        endforeach; ?> ) :
         </p>
         <div class="seller-rating" data-id=<?= $seller->id ?>>
             <?php for ($i = 1; $i <= 5; $i++) : ?>

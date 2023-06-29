@@ -20,7 +20,7 @@ class UserManager extends ModelManager{
     {
         $req =  $this->bdd->prepare("SELECT user.*, AVG(rates_seller.rating) as averageRating FROM ". $this->table ." 
         INNER JOIN rates_seller
-            ON rates_seller.user_id = user.id
+            ON rates_seller.seller_id = user.id
         WHERE user.id = :seller_id");
         $req->bindParam(":seller_id", $seller_id);
         $req->execute();

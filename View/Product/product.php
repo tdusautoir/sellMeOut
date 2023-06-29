@@ -36,21 +36,23 @@
     <?php endif; ?>
 </div>
 
-<div class="seller">
-    <p>Vendeur : <?= $product->user->pseudo ?></p>
-    <p>Mail du vendeur : <?= $product->user->mail ?></p>
-    <div>Note moyenne du vendeur :
-        <?php if (isset($product->user->averageRating)) : ?>
-            <?php for ($i = 1; $i <= 5; $i++) : ?>
-                    <?php if ($i <= $product->user->averageRating) : ?>
-                        <i class="fas fa-star star"></i>
-                    <?php else : ?>
-                        <i class="far fa-star star"></i>
-                    <?php endif; ?>
-            <?php endfor; ?>
-        <?php else: ?>
-            Aucune note
-        <?php endif; ?>
-        
+<?php if(!(isset($seller) && $seller)): ?>
+    <div class="seller">
+        <p>Vendeur : <?= $product->user->pseudo ?></p>
+        <p>Mail du vendeur : <?= $product->user->mail ?></p>
+        <div>Note moyenne du vendeur :
+            <?php if (isset($product->user->averageRating)) : ?>
+                <?php for ($i = 1; $i <= 5; $i++) : ?>
+                        <?php if ($i <= $product->user->averageRating) : ?>
+                            <i class="fas fa-star star"></i>
+                        <?php else : ?>
+                            <i class="far fa-star star"></i>
+                        <?php endif; ?>
+                <?php endfor; ?>
+            <?php else: ?>
+                Aucune note
+            <?php endif; ?>
+            
+        </div>
     </div>
-</div>
+<?php endif; ?>
