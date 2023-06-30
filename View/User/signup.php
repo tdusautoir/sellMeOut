@@ -4,6 +4,11 @@
     <!-- <label for="pseudo">Pseudo</label>
     <input type="text" id="pseudo" name="pseudo"> -->
 
+    <div class="Pseudo">
+        <label for="pseudo">Pseudo</label>
+        <input class="error" type="text" id="pseudo" name="pseudo">
+    </div>
+
     <div class="Mail">
         <label for="mail">Mail</label>
         <input class="error" type="text" id="mail" name="mail">
@@ -17,6 +22,7 @@
         <p class="Role">Rôle</p>
         <select id="role" name="role">
             <option value=""></option>
+            <option value="sell_me_out">SellMeOut</option>
             <option value="seller">Vendeur</option>
             <option value="buyer">Acheteur</option>
         </select>

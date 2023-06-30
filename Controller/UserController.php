@@ -4,7 +4,7 @@ namespace Controller;
 class UserController extends Controller {
     protected $userManager;
     protected $rateUserManager;
-    protected $allowedRoles = ["buyer", "seller"];
+    protected $allowedRoles = ["buyer", "seller", "sell_me_out"];
 
     function SignupView() 
     {
@@ -16,10 +16,10 @@ class UserController extends Controller {
         $this->view("login");
     }
 
-    function Signup($mail, $password, $role) 
+    function Signup($mail, $password, $role, $pseudo) 
     {
         $user = new \stdClass();
-        $user->pseudo = 'test';
+        $user->pseudo = $pseudo;
         $user->mail = $mail;
 
         if(!(filter_var($mail, FILTER_VALIDATE_EMAIL))) {

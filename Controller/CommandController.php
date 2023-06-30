@@ -13,6 +13,7 @@ class CommandController extends Controller {
 
         switch($_SESSION["user"]->role) {
             case "seller":
+            case "sell_me_out":
                 $products = $this->productManager->getAllBySeller($_SESSION["user"]->id);
                 foreach($products as $product) {
                     $product->total = 0;
@@ -32,6 +33,7 @@ class CommandController extends Controller {
                     }
                 }
 
+                $this->compact(["seller" => true]);
                 $this->compact(["products" => $products]);
                 break;
             case "buyer":
@@ -53,11 +55,16 @@ class CommandController extends Controller {
 
         foreach($command->products as $product) {
             if(!isset($command->sellers[$product->user_id])) {
-                $command->sellers[$product->user_id] = $this->userManager->getByIdWithUserRating($product->user_id, $_SESSION["user"]->id);
+                $user = $this->userManager->getByIdWithUserRating($product->user_id, $_SESSION["user"]->id);
+                if($user->role !== "sell_me_out") {
+                    $command->sellers[$product->user_id] = $user;
+                }
             }
-                
-            $command->sellers[$product->user_id]->products[] = $product;
 
+            if(isset($command->sellers[$product->user_id]) && $command->sellers[$product->user_id]->role !== "sell_me_out") {
+                $command->sellers[$product->user_id]->products[] = $product;
+            }
+            
             $product->rate = $this->rateProductManager->getProductCurrentRate($product->id, $command->user_id);
 
             if($product->rate !== false) {

@@ -2,7 +2,6 @@ h2{
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 50px;
   font-size: 50px;
   font-weight: 200;
 }
@@ -13,10 +12,10 @@ form{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 100px;
+  gap: 60px;
 }
 
-.Mail, .Password, .Role{
+.Mail, .Password, .Role, .Pseudo{
   display: flex;
   flex-direction: column;
   gap: 30px;

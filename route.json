@@ -70,10 +70,7 @@
         "manager": [
             "product"
         ],
-        "auth": [
-            "sell_me_out",
-            "seller"
-        ]
+        "auth": ["sell_me_out", "seller"]
     },
     {
         "path": "/products/new",
@@ -83,10 +80,7 @@
         "manager": [
             "product"
         ],
-        "auth": [
-            "sell_me_out",
-            "seller"
-        ]
+        "auth": ["sell_me_out", "seller"]
     },
     {
         "path":"/products/([0-9]*)",
@@ -107,7 +101,7 @@
         "manager": [
             "product"
         ],
-        "auth": ["seller"]
+        "auth": ["seller", "sell_me_out"]
     },
     {
         "path":"/products/([0-9]*)/unpublish",
@@ -117,7 +111,7 @@
         "manager": [
             "product"
         ],
-        "auth": ["seller"]
+        "auth": ["seller", "sell_me_out"]
     },
     {
         "path":"/products/search/([a-zA-Z0-9%]*)",
@@ -185,7 +179,7 @@
             "command",
             "commandDetail"
         ],
-        "auth": ["seller"]
+        "auth": ["seller", "sell_me_out"]
     },
     {
         "path":"/profil/products/search/([a-zA-Z0-9%]*)",
@@ -197,7 +191,7 @@
             "command",
             "commandDetail"
         ],
-        "auth": ["seller"]
+        "auth": ["seller", "sell_me_out"]
     },
     {
         "path":"/profil/commands",

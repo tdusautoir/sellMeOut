@@ -36,7 +36,7 @@
     <?php endif; ?>
 </div>
 
-<?php if(!(isset($seller) && $seller)): ?>
+<?php if(!(isset($seller) && $seller) && $product->user->role != "sell_me_out"): ?>
     <div class="seller">
         <p>Vendeur : <?= $product->user->pseudo ?>
         ( 

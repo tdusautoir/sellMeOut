@@ -1,7 +1,11 @@
 <h2>Commandes</h2>
 
 <?php if(empty($commands)): ?>
-    <p>Vous n'avez passer aucune commande</p>
+    <?php if(isset($seller) && $seller): ?>
+        <p>Vous n'avez reçu aucune commande</p>
+    <?php else: ?>
+        <p>Vous n'avez passé aucune commande</p>
+    <?php endif; ?>
 <?php else: ?>
     <?php if($_SESSION["user"]->role == "buyer"): ?>
     <div class="commands-list">
@@ -18,7 +22,7 @@
             </div>
         <?php endforeach; ?>
     </div>
-    <?php elseif($_SESSION["user"]->role == "seller"): ?>
+    <?php elseif($_SESSION["user"]->role != "buyer"): ?>
             <?php foreach($products as $product): ?>
                 <div class="product">
                     <h3><?= $product->name ?></h3>
