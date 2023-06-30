@@ -22,7 +22,6 @@
         <p class="Role">Rôle</p>
         <select id="role" name="role">
             <option value=""></option>
-            <option value="sell_me_out">SellMeOut</option>
             <option value="seller">Vendeur</option>
             <option value="buyer">Acheteur</option>
         </select>

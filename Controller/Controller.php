@@ -9,7 +9,6 @@ class Controller {
     protected $params = [];
 
     protected $commandManager;
-
     protected $commandDetailManager;
 
 
@@ -23,8 +22,8 @@ class Controller {
         if(!empty($this->route->manager)) {
             foreach($this->route->manager as $manager) {
                 $managerName = $manager . "Manager";
-                $managerClass = "\\Model\\" . $managerName;
-                $this->{$managerName} = new $managerClass();
+                $managerClass = "\\Model\\" .ucfirst($managerName);
+                $this->{lcfirst($managerName)} = new $managerClass();
             }
         }
     }

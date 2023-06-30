@@ -4,7 +4,7 @@ namespace Controller;
 class UserController extends Controller {
     protected $userManager;
     protected $rateUserManager;
-    protected $allowedRoles = ["buyer", "seller", "sell_me_out"];
+    protected $allowedRoles = ["buyer", "seller"];
 
     function SignupView() 
     {
