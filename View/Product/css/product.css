@@ -1,3 +1,111 @@
-.ratings .star.fas {
+.ratings .fa-star {
     color: orange;
+}
+
+.title-note{
+    font-size : 30px!important ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title-note h1{
+    font-size: 40px;
+    font-weight: 300;
+    padding-bottom: 5px;
+    border-bottom: 3px solid orange ;
+}
+
+.desc{
+    margin-top: 60px;
+    padding: 30px;
+    background-color: rgb(240, 245, 250);
+    border-radius: 10px;
+}
+
+.desc-title{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    font-size: 26px;
+}
+
+.desc-title p{
+    border-bottom: 2px solid orange;
+}
+
+.desc > p{
+    padding-top: 30px;
+    text-align: left;
+    font-size: 20px;
+    overflow-wrap: break-word;
+    min-height: 300px;
+}
+
+.price{
+    padding-top: 80px;
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.price > p{
+    font-size: 24px;
+}
+
+.price form{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.price form input{
+    width: 120px;
+    background-color: unset;
+    border: none;
+    border-bottom: 2px solid orange;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.price form input:focus{
+    outline:none!important;
+}
+
+.price form button{
+    width: 30px;
+    height: 30px;
+    background-color: unset;
+    border: none;
+    background-color: orange;
+    border-radius: 100vmax;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.price form button > i{
+    font-size: 20px;
+}
+
+.price form button:hover{
+    cursor: pointer;
+}
+
+.seller{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    gap: 20px;
+    font-size: 20px;
 }

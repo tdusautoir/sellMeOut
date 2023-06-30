@@ -70,10 +70,7 @@
         "manager": [
             "product"
         ],
-        "auth": [
-            "sell_me_out",
-            "seller"
-        ]
+        "auth": ["sell_me_out", "seller"]
     },
     {
         "path": "/products/new",
@@ -83,10 +80,7 @@
         "manager": [
             "product"
         ],
-        "auth": [
-            "sell_me_out",
-            "seller"
-        ]
+        "auth": ["sell_me_out", "seller"]
     },
     {
         "path":"/products/([0-9]*)",
@@ -95,7 +89,37 @@
         "method": "GET",
         "manager": [
             "product",
-            "rate"
+            "rateProduct",
+            "user"
+        ]
+    },
+    {
+        "path":"/products/([0-9]*)/publish",
+        "controller":"Product",
+        "action":"PublishProduct",
+        "method": "POST",
+        "manager": [
+            "product"
+        ],
+        "auth": ["seller", "sell_me_out"]
+    },
+    {
+        "path":"/products/([0-9]*)/unpublish",
+        "controller":"Product",
+        "action":"UnpublishProduct",
+        "method": "POST",
+        "manager": [
+            "product"
+        ],
+        "auth": ["seller", "sell_me_out"]
+    },
+    {
+        "path":"/products/search/([a-zA-Z0-9%]*)",
+        "controller":"Product",
+        "action":"ShowSearchProducts",
+        "method": "GET",
+        "manager": [
+            "product"
         ]
     },
     {
@@ -105,7 +129,7 @@
         "method": "POST",
         "manager": [
             "product",
-            "rate"
+            "rateProduct"
         ],
         "auth": ["*"]
     },
@@ -115,16 +139,94 @@
         "action":"ShowCart",
         "method": "GET",
         "manager": [
-            "cart"
-        ]
+            "product"
+        ],
+        "auth": ["buyer"]
     },
     {
-        "path":"/cart/validate",
+        "path": "/cart/add",
+        "controller": "Cart",
+        "action": "AddToCart",
+        "method": "POST",
+        "auth": ["buyer"]
+    },
+    {
+        "path": "/cart/remove/([0-9]*)",
+        "controller": "Cart",
+        "action": "RemoveFromCart",
+        "method": "POST",
+        "auth": ["buyer"]
+    },
+    {
+        "path":"/cart/command",
         "controller":"Cart",
-        "action":"ValidateCart",
+        "action": "commandCart",
+        "method": "POST",
+        "manager": [
+            "product",
+            "command",
+            "commandDetail"
+        ],
+        "auth": ["buyer"]
+    },
+    {
+        "path":"/profil/products",
+        "controller":"Product",
+        "action": "ShowProductsSeller",
         "method": "GET",
         "manager": [
-            "cart"
-        ]
+            "product",
+            "command",
+            "commandDetail"
+        ],
+        "auth": ["seller", "sell_me_out"]
+    },
+    {
+        "path":"/profil/products/search/([a-zA-Z0-9%]*)",
+        "controller":"Product",
+        "action": "ShowSearchProductsSeller",
+        "method": "GET",
+        "manager": [
+            "product",
+            "command",
+            "commandDetail"
+        ],
+        "auth": ["seller", "sell_me_out"]
+    },
+    {
+        "path":"/profil/commands",
+        "controller":"Command",
+        "action": "ShowCommands",
+        "method": "GET",
+        "manager": [
+            "command",
+            "product",
+            "rateProduct"
+        ],
+        "auth": ["*"]
+    },
+    {
+        "path":"/profil/commands/([0-9]*)",
+        "controller":"Command",
+        "action": "ShowCommand",
+        "method": "GET",
+        "manager": [
+            "command",
+            "commandDetail",
+            "rateProduct",
+            "user"
+        ],
+        "auth": ["*"]
+    },
+    {
+        "path": "/user/([0-9]*)/rate",
+        "controller": "User",
+        "action": "rateUser",
+        "method": "POST",
+        "manager": [
+            "user",
+            "rateUser"
+        ],
+        "auth": ["*"]
     }
 ]

@@ -1,0 +1,88 @@
+.product > h3{
+    padding-top: 50px;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.product .resume {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding-top: 15px;
+    font-size: 18px;
+}
+
+
+.commands-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 30px;
+    width: 100%;
+}
+
+h2{
+    font-size: 24px;
+    font-weight: 300;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.container .show-details {
+    position: sticky;
+    font-size: 20px;
+    transition: all .2s linear;
+}
+
+.container .show-details.rotate {
+    transform : rotate(180deg);
+    transition: all .3s linear;
+}
+
+.command {
+    width: 100%;
+    background-color:rgb(240, 245, 250) ;
+    border-radius:5px;
+    cursor: pointer;
+    text-align: center;
+    padding: 12px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.command-details {
+    font-size: 20px;
+    font-weight: 200;
+    padding: 25px 0px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.command h3{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.bar{
+    display: block;
+    height: 50px;
+    border-bottom: 5px solid orange;
+}
+
+p{
+    font-size: 18px;
+    padding-top: 20px;
+}

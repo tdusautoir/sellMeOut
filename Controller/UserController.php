@@ -3,73 +3,51 @@ namespace Controller;
 
 class UserController extends Controller {
     protected $userManager;
-
-    function UpdateUser()
-    {
-        $user = new \stdClass();
-        $user->id = 3;
-        $user->mail = "test2@test2.fr";
-        $user->password = password_hash("imverysecure",PASSWORD_DEFAULT);
-        $user->pseudo = "test2";
-        if ($this->userManager->update($user)) {
-            echo "Utilisateur modifié !";
-        }
-    }
-
-    function DeleteUser()
-    {
-        if ($this->userManager->delete("3")) {
-            echo "Utilisateur supprimé !";
-        }
-    }
+    protected $rateUserManager;
+    protected $allowedRoles = ["buyer", "seller", "sell_me_out"];
 
     function SignupView() 
     {
         $this->view("signup");
     }
 
-    function LoginView($error = null) 
+    function LoginView() 
     {
-        if(isset($error)) {
-            $this->compact([
-                "error" => $error
-            ]);
-        }
-
         $this->view("login");
     }
 
-    function Signup($mail, $password) 
+    function Signup($mail, $password, $role, $pseudo) 
     {
         $user = new \stdClass();
-        $user->pseudo = 'test';
+        $user->pseudo = $pseudo;
         $user->mail = $mail;
 
         if(!(filter_var($mail, FILTER_VALIDATE_EMAIL))) {
-            $this->compact([
-                "error" => "Mail invalide !",
-                "error_mail" => true,
+            create_flash_message("error", "Email invalide", FLASH_ERROR);
 
-            ]);
-
-            $this->SignupView();
-            exit();
-        }
-
-        if($this->userManager->getByMail($mail)) {
-            $this->compact([
-                "error" => "Mail déja utilisé !"
-            ]);
-            
             $this->SignupView();
             exit();
         }
 
         if(!(preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', $password))) {
-            $this->compact([
-                "error" => "Votre mot de passe doit contenir au moins 8 caractères, une lettre majuscule,
-                une lette minuscule, un chiffre et un caractère spécial"
-            ]);
+            create_flash_message("error", "Votre mot de passe doit contenir au moins 8 caractères, une lettre majuscule,
+            une lette minuscule, un chiffre et un caractère spécial", FLASH_ERROR);
+
+            $this->SignupView();
+            exit();
+        }
+
+        if(!in_array($role, $this->allowedRoles)) {
+            create_flash_message("error", "Role invalide", FLASH_ERROR);
+
+            $this->SignupView();
+            exit();
+        } 
+            
+        $user->role = $role;
+
+        if($this->userManager->getByMail($mail)) {
+            create_flash_message("error", "Vous possédez déjà un compte", FLASH_ERROR);
 
             $this->SignupView();
             exit();
@@ -78,10 +56,10 @@ class UserController extends Controller {
         $user->password = password_hash($password, PASSWORD_DEFAULT);
 
         if ($this->userManager->create($user)) {
-            $this->compact(["success" => "Votre compte a bien été créé !"]);
-            $this->LoginView();
+            create_flash_message("success", "Votre compte a bien été créé !", FLASH_SUCCESS);
+            header("Location: /login");
         } else {
-            $this->compact(["error" => "Une erreur est survenue !"]);
+            create_flash_message("error", "Une erreur est survenue !", FLASH_ERROR);
             $this->SignupView();
         }
     }
@@ -89,16 +67,22 @@ class UserController extends Controller {
     function Login($mail, $password) 
     {
         $user = $this->userManager->getByMail($mail);
+
         if($user) {
             if (password_verify($password, $user->password)) {
                 unset($user->password);
                 $_SESSION["user"] = $user;
-                header("Location: /User");
+
+                create_flash_message("success", "Connexion réussie !", FLASH_SUCCESS);
+                header("Location: /products");
             } else {
-                $this->LoginView("Mauvais mot de passe !");
+                create_flash_message("error", "Mot de passe incorrect !", FLASH_ERROR);
+                $this->LoginView();
             }
         } else {
-            $this->LoginView("Utilisateur non trouvé !");
+            create_flash_message("error", "Email introuvable !", FLASH_ERROR);
+
+            $this->LoginView();
         }
     }
 
@@ -106,6 +90,41 @@ class UserController extends Controller {
     {
         session_unset();
         session_destroy();
-        header("Location: /User/login");
+        header("Location: /login");
+    }
+
+    function RateUser($id, $rating) {
+        $rate = $this->rateUserManager->getUserCurrentRate($id, $_SESSION["user"]->id);
+
+        if ($rate !== false) {
+            $rate->rating = $rating;
+            if ($this->rateUserManager->update($rate)) {
+                $this->json([
+                    "success" => true
+                ]);
+
+                exit;
+            }
+        }
+
+        $rate = new \stdClass();
+        $rate->seller_id = $id;
+        $rate->user_id = $_SESSION["user"]->id;
+        $rate->rating = $rating;
+
+        if ($this->rateUserManager->create($rate)) {
+            $this->json([
+                "rate" => $rate,
+                "success" => true
+            ]);
+
+            exit;
+        }
+
+        $this->json([
+            "success" => false
+        ]);
+
+        exit;
     }
 }

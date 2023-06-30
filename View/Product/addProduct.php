@@ -1,6 +1,6 @@
 <h2>Ajout produit</h2>
 
-<form action="/Product/new" method="POST">
+<form action="/products/new" method="POST">
     <div class="name">
         <label for="name">Nom</label>
         <input class="error" type="text" id="name" name="name"> 

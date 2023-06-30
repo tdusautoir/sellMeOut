@@ -29,7 +29,7 @@ class ModelManager
         return $req->fetch();
     }
 
-    public function create($obj)
+    public function create($obj, $get_id = false)
     {
         $sql = "INSERT INTO " . $this->table;
         $properties = array_keys(get_object_vars($obj));
@@ -43,7 +43,11 @@ class ModelManager
 
         $req->execute(get_object_vars($obj));
 
-        return $req->rowCount() == 1;
+        if(!$get_id) {
+            return $req->rowCount() == 1;
+        }
+
+        return $this->bdd->lastInsertId();
     }
 
     public function update($obj)
@@ -77,5 +81,13 @@ class ModelManager
         $req = $this->bdd->prepare("DELETE FROM " . $this->table . " WHERE id= :id");
         $req->execute(array("id" => $id));
         return $req->rowCount() == 1;
+    }
+
+    public function updateDeletionValue($id)
+    {
+        $sql = "UPDATE " . $this->table . " SET `deletion` = 1 WHERE id = :id";
+        $req = $this->bdd->prepare($sql);
+        $req->execute(array("id" => $id));
+        return $req->rowCount() >= 0;
     }
 }
