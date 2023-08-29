@@ -30,7 +30,7 @@ class ProductManager extends ModelManager{
     public function getByIdWithRatings($product_id)
     {
         $req =  $this->bdd->prepare("SELECT product.*, AVG(rates_product.rating) as averageRating FROM product 
-        INNER JOIN rates_product
+        LEFT JOIN rates_product
             ON rates_product.product_id = product.id
         WHERE product.id = :product_id");
         $req->bindParam(":product_id", $product_id);

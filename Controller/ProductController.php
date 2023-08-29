@@ -33,7 +33,7 @@ class ProductController extends Controller {
     function showProduct($id) {
         $product = $this->productManager->getByIdWithRatings($id);
         $product->user = $this->userManager->getByIdWithRatings($product->user_id);
-
+        
         if($product->public == 0 && $product->user_id != $_SESSION["user"]->id) {
             create_flash_message("error", "Vous n'avez pas accès à ce produit", FLASH_ERROR);
             header("Location: /products");
